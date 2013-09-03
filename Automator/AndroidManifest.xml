@@ -26,6 +26,8 @@
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="AIzaSyATELM4it7M2mdKT4Pgfg_yAWHq30oidEE" />
+        
+        <Service android:name="com.dinu.automator.locatorService"/>
 
         <activity
             android:name="com.dinu.automator.activity.SplashActivity"
