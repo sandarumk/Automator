@@ -47,8 +47,8 @@ public class MainActivity extends Activity {
 				}else if(position == 2){
 					startActivity(new Intent(MainActivity.this,SmsActivity.class));
 				}else if(position == 3){
-					//startActivity(new Intent(MainActivity.this,Settings.class));
-					startActivity(new Intent(MainActivity.this,LocatorActivity.class));
+					startActivity(new Intent(MainActivity.this,Settings.class));
+					//startActivity(new Intent(MainActivity.this,LocatorActivity.class));
 				}
 				// TODO Auto-generated method stub
 				

@@ -10,7 +10,12 @@ import android.view.Menu;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.dinu.automator.Constant;
 import com.dinu.automator.R;
+import com.dinu.automator.view.DisplaySettingsFragment;
+import com.dinu.automator.view.LocationFragment;
+import com.dinu.automator.view.NetworkSettingFragment;
+import com.dinu.automator.view.SoundSettingsFramgement;
 import com.dinu.automator.view.TestFragment;
+import com.dinu.automator.view.setBatteryLevelFragment;
 import com.viewpagerindicator.TabPageIndicator;
 
 public class ProfileSettingsActivity extends SherlockFragmentActivity {
@@ -48,7 +53,19 @@ public class ProfileSettingsActivity extends SherlockFragmentActivity {
 
 		@Override
 		public Fragment getItem(int position) {
-			return TestFragment.newInstance(CONTENT[position % CONTENT.length]);
+		if (position% CONTENT.length==0){
+				return LocationFragment.newInstance();
+			}else if(position % CONTENT.length==1){
+				return setBatteryLevelFragment.newInstance();
+			}else if(position % CONTENT.length==2){
+				return SoundSettingsFramgement.newInstance();
+			}else if(position % CONTENT.length==3){
+				return DisplaySettingsFragment.newInstance();
+			}else if(position % CONTENT.length==4){
+				return NetworkSettingFragment.newInstance();
+			}
+		
+		return TestFragment.newInstance(CONTENT[position % CONTENT.length]);
 		}
 
 		@Override
