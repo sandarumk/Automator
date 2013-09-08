@@ -8,6 +8,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
+import android.webkit.WebView.FindListener;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -28,6 +29,8 @@ public class ProfileActivity extends SherlockActivity {
 
 		getSupportActionBar().show();
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+		
+		
 
 		Profile profile1 = new Profile(1, "pro1");
 		Profile profile2 = new Profile(2, "pro2");
@@ -72,9 +75,13 @@ public class ProfileActivity extends SherlockActivity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case android.R.id.home:
-			// do your own thing here
 			finish();
 			return true;
+		case R.id.action_new_profile:
+			startActivity(new Intent (ProfileActivity.this,ProfileSettingsActivity.class));
+			return true;
+			
+		
 		default:
 			return super.onOptionsItemSelected(item);
 		}

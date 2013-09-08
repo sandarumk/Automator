@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+    <TextView
+        android:id="@+id/textView_volume"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sound_fragment_volume"/>
+
+    <SeekBar
+        android:id="@+id/seekBar_volume"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    
+    </TableRow>
+    
+   
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+    <TextView
+        android:id="@+id/textView_vibration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sound_fragment_vibration"/>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right" >
+
+    <CheckBox
+        android:id="@+id/checkBox_vibration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+    </LinearLayout>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+    
+
+
+        <TextView
+        android:id="@+id/textView_silent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sound_fragment_silent"/>
+        
+        <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right" >
+
+    <CheckBox
+        android:id="@+id/check_silent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+  
+
+</LinearLayout>
+</LinearLayout>
+    </LinearLayout>

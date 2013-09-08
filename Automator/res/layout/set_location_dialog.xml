@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding= "12dp" >
+    
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+<!--     <TextView -->
+<!--         android:id="@+id/textView_name" -->
+<!--         android:layout_width="wrap_content" -->
+<!--         android:layout_height="wrap_content" -->
+<!--         android:text="@string/dialog_text_location_name" /> -->
+    <EditText
+        android:id="@+id/editText_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:hint="@string/dialog_text_location_name"/>
+        
+    </TableRow>
+    
+    <TableRow 
+        android:layout_width="match_parent" 
+        android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/textView_lattitude"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/dialog_text_lattitude" />
+    <EditText
+        android:id="@+id/editText_lttitude"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"/>
+        
+    </TableRow>
+        
+    
+    
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+    <TextView
+        android:id="@+id/textView_longitude"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/dialog_text_longitude" />
+    <EditText
+        android:id="@+id/editText_longitude"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"/>
+        
+    </TableRow>
+        
+    
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+<!--     <TextView -->
+<!--         android:id="@+id/textView_radius" -->
+<!--         android:layout_width="wrap_content" -->
+<!--         android:layout_height="wrap_content" -->
+<!--         android:text="@string/dialog_text_location_radius" /> -->
+    <EditText
+        android:id="@+id/editText_radius"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:hint="@string/dialog_text_location_radius"/>
+        
+    </TableRow>
+    
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+    
+        <RadioGroup
+            android:id="@+id/radiogroup_entering">
+
+        <RadioButton
+            android:id="@+id/radiobutton_entering"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/dialog_list_choice_item1"
+            android:clickable="true"/>
+        <RadioButton
+            android:id="@+id/radiobutton_leaving"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/dialog_list_choice_item2"/>
+        </RadioGroup>
+       
+  
+    </TableRow>
+        
+        
+        
+    
+
+</LinearLayout>

@@ -13,12 +13,13 @@
     </style>
 
     <!-- Application theme. -->
-    <style name="AppTheme" parent="AppBaseTheme">
+    <style name="AppTheme" parent="@style/Theme.Sherlock.Light.DarkActionBar">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
     
-     <style name="StyledIndicators" parent="@android:style/Theme.Light">
-        <item name="vpiTabPageIndicatorStyle">@style/CustomTabPageIndicator</item>
+     <style name="StyledIndicators" parent="@style/AppTheme">
+         
+        <item name="vpiTabPageIndicatorStyle">@style/Theme.PageIndicatorDefaults</item>
     </style>
     
     
