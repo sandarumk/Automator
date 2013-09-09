@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.MenuItem;
 import com.dinu.automator.Constant;
+import com.dinu.automator.DataStore;
 import com.dinu.automator.Profile;
 import com.dinu.automator.R;
 import com.dinu.automator.adapter.ProfileListAdapter;
@@ -31,17 +32,19 @@ public class ProfileActivity extends SherlockActivity {
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		
 		
+//
+//		Profile profile1 = new Profile(1, "pro1");
+//		Profile profile2 = new Profile(2, "pro2");
+//		Profile profile3 = new Profile(3, "pro3");
+//		Profile profile4 = new Profile(4, "pro4");
 
-		Profile profile1 = new Profile(1, "pro1");
-		Profile profile2 = new Profile(2, "pro2");
-		Profile profile3 = new Profile(3, "pro3");
-		Profile profile4 = new Profile(4, "pro4");
-
-		final List<Profile> profileList = new ArrayList<Profile>();
-		profileList.add(profile1);
-		profileList.add(profile2);
-		profileList.add(profile3);
-		profileList.add(profile4);
+final List<Profile> profileList = new ArrayList<Profile>();
+//		profileList.add(profile1);
+//		profileList.add(profile2);
+//		profileList.add(profile3);
+//		profileList.add(profile4);
+		
+		profileList.addAll(DataStore.getProfile());
 
 		ProfileListAdapter adapter1 = new ProfileListAdapter(this, R.layout.profile_list_row,
 				R.id.profle_list_row_text, profileList);
@@ -79,6 +82,8 @@ public class ProfileActivity extends SherlockActivity {
 			return true;
 		case R.id.action_new_profile:
 			startActivity(new Intent (ProfileActivity.this,ProfileSettingsActivity.class));
+			Profile profile=new Profile(3,"pro3");
+			DataStore.addProfile(profile);
 			return true;
 			
 		

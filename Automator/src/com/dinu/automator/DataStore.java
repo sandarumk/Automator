@@ -61,7 +61,7 @@ public class DataStore {
 	}
 
 	public static void retrieveData(Context context) {
-		retrieveData(context);
+		retreiveAlarm(context);
 		retreiveSms(context);
 		retreiveProfiles(context);
 	}
@@ -78,18 +78,22 @@ public class DataStore {
 			fis.close();
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		} catch (StreamCorruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (Exception e){
+		}finally{
+			if (profiles==null){
 			profiles= new ArrayList<Profile>();
+			}
 		}
 		
 
@@ -116,8 +120,10 @@ public class DataStore {
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (Exception e){
+		} finally{
+			if(sms==null){
 			sms= new ArrayList<Sms>();
+			}
 		}
 		
 
@@ -129,7 +135,7 @@ public class DataStore {
 		try {
 			fis = context.openFileInput(filename);
 			ObjectInputStream ois = new ObjectInputStream(fis);
-			sms = (ArrayList<Sms>) ois.readObject();
+			alarms= (ArrayList<Alarm>) ois.readObject();
 			ois.close();
 			fis.close();
 		} catch (FileNotFoundException e) {
@@ -144,8 +150,11 @@ public class DataStore {
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (Exception e){
-			sms= new ArrayList<Sms>();
+		} finally{
+			if(alarms==null){
+				alarms= new ArrayList<Alarm>();
+			}
+			
 		}
 		
 
@@ -161,6 +170,14 @@ public class DataStore {
 	
 	public static void deleteProfile(Profile profile){
 		profiles.remove(profile);
+	}
+	
+	public static List<Profile> getProfile(){
+		profiles=new ArrayList<Profile>();
+		Profile profile= new Profile(1,"pro1");
+		profiles.add(profile);
+		profiles.add(new Profile(1,"pro2"));
+		return profiles;
 	}
 	
 

@@ -42,22 +42,6 @@ public class Profile {
 		this.enable=false;
 	}
 
-	public void save(){
-		List<Profile> profiles= DataStore.getProfileList();
-		Profile temp=new Profile();
-		Iterator<Profile> iterator = profiles.iterator();
-		while(iterator.hasNext()){
-			temp=iterator.next();
-			if(id==temp.id){
-				DataStore.deleteProfile(temp);
-				
-				}
-			DataStore.addProfile(this);
-		}
-		
-		}
-		
-	
 	
 	
 	

@@ -75,8 +75,7 @@
         </activity>
         <activity
             android:name="com.dinu.automator.activity.ProfileSettingsActivity"
-            android:label="@string/title_activity_profile_settings"
-            android:theme="@style/StyledIndicators" >
+            android:label="@string/title_activity_profile_settings">
         </activity>
         <activity
             android:name="com.dinu.automator.LocationActivity"

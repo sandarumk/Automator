@@ -15,7 +15,7 @@ public class ConfirmDeleteDialogFragment extends DialogFragment{
 	public Dialog onCreateDialog(Bundle savedInstanceState){
 		AlertDialog.Builder builder= new AlertDialog.Builder(getActivity());
 		builder.setMessage(R.string.dialog_message_confirm_delete).setPositiveButton(R.string.dialog_button_delete, new DialogInterface.OnClickListener() {
-			
+		
 			@Override
 			public void onClick(DialogInterface dialog, int id) {
 				// TODO Auto-generated method stub

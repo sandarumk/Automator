@@ -1,6 +1,5 @@
 package com.dinu.automator.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
@@ -12,6 +11,8 @@ import android.view.Menu;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.MenuItem;
 import com.dinu.automator.Constant;
+import com.dinu.automator.DataStore;
+import com.dinu.automator.Profile;
 import com.dinu.automator.R;
 import com.dinu.automator.view.ConfirmDeleteDialogFragment;
 import com.dinu.automator.view.DisplaySettingsFragment;
@@ -24,6 +25,9 @@ import com.viewpagerindicator.TabPageIndicator;
 
 public class ProfileSettingsActivity extends SherlockFragmentActivity {
 
+	
+	private Profile profile;
+	
 	private static final String[] CONTENT = new String[] { "Location", "Battery Level", "Sound", "Display", "Network" };
 
 	@Override
@@ -42,10 +46,10 @@ public class ProfileSettingsActivity extends SherlockFragmentActivity {
 		TabPageIndicator indicator = (TabPageIndicator) findViewById(R.id.indicator);
 		indicator.setViewPager(pager);
 		
-		//if (getSupportActionBar()!=null){
+		if (getSupportActionBar()!=null){
 			getSupportActionBar().show();
 			getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-	//	}
+		}
 		
 		
 		
@@ -64,11 +68,16 @@ public class ProfileSettingsActivity extends SherlockFragmentActivity {
 			finish();
 			return true;
 		case R.id.action_save:
-			//save the current set profile
+			//save the current set profil
+			
+			
 			return true;
 		case R.id.action_delete:
 			DialogFragment fragment= new ConfirmDeleteDialogFragment();
 			fragment.show(getSupportFragmentManager(), "Delete");
+			
+			
+		
 			//delete the current selected profile
 			
 		
