@@ -53,4 +53,66 @@ public class Profile {
 	public String getName() {
 		return name;
 	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public SoundProfile getSounds() {
+		return sounds;
+	}
+
+	public void setSounds(SoundProfile sounds) {
+		this.sounds = sounds;
+	}
+
+	public DisplaySettings getDisplay() {
+		return display;
+	}
+
+	public void setDisplay(DisplaySettings display) {
+		this.display = display;
+	}
+
+	public NetworkSettings getNetwork() {
+		return network;
+	}
+
+	public void setNetwork(NetworkSettings network) {
+		this.network = network;
+	}
+
+	public Location[] getLocations() {
+		return locations;
+	}
+
+	public void setLocations(Location[] locations) {
+		this.locations = locations;
+	}
+
+	public BatteryLevel getBatteryLevel() {
+		return batteryLevel;
+	}
+
+	public void setBatteryLevel(BatteryLevel batteryLevel) {
+		this.batteryLevel = batteryLevel;
+	}
+
+	public boolean isEnable() {
+		return enable;
+	}
+
+	public void setEnable(boolean enable) {
+		this.enable = enable;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	
 }

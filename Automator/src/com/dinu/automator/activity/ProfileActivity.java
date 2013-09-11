@@ -30,24 +30,32 @@ public class ProfileActivity extends SherlockActivity {
 
 		getSupportActionBar().show();
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-		
-		
-//
-//		Profile profile1 = new Profile(1, "pro1");
-//		Profile profile2 = new Profile(2, "pro2");
-//		Profile profile3 = new Profile(3, "pro3");
-//		Profile profile4 = new Profile(4, "pro4");
 
-final List<Profile> profileList = new ArrayList<Profile>();
-//		profileList.add(profile1);
-//		profileList.add(profile2);
-//		profileList.add(profile3);
-//		profileList.add(profile4);
-		
-		profileList.addAll(DataStore.getProfile());
+		//
+		// Profile profile1 = new Profile(1, "pro1");
+		// Profile profile2 = new Profile(2, "pro2");
+		// Profile profile3 = new Profile(3, "pro3");
+		// Profile profile4 = new Profile(4, "pro4");
 
-		ProfileListAdapter adapter1 = new ProfileListAdapter(this, R.layout.profile_list_row,
-				R.id.profle_list_row_text, profileList);
+		// profileList.add(profile1);
+		// profileList.add(profile2);
+		// profileList.add(profile3);
+		// profileList.add(profile4);
+
+	}
+	
+	@Override
+	protected void onResume() {
+		super.onResume();
+		setupList();
+	}
+
+	private void setupList() {
+
+		final List<Profile> profileList = new ArrayList<Profile>();
+		profileList.addAll(DataStore.getProfileList());
+
+		ProfileListAdapter adapter1 = new ProfileListAdapter(this, R.layout.profile_list_row, R.id.profle_list_row_text, profileList);
 		ListView listView = (ListView) findViewById(R.id.listView_profile_list);
 
 		listView.setAdapter(adapter1);
@@ -81,12 +89,13 @@ final List<Profile> profileList = new ArrayList<Profile>();
 			finish();
 			return true;
 		case R.id.action_new_profile:
-			startActivity(new Intent (ProfileActivity.this,ProfileSettingsActivity.class));
-			Profile profile=new Profile(3,"pro3");
-			DataStore.addProfile(profile);
+			Intent intent = new Intent(ProfileActivity.this, ProfileSettingsActivity.class);
+			intent.putExtra(Constant.INTENT_EXTRA_PROFILE_INDEX, -1);
+			startActivity(intent);
+			// Profile profile=new Profile(3,"pro3");
+			// DataStore.addProfile(profile);
 			return true;
-			
-		
+
 		default:
 			return super.onOptionsItemSelected(item);
 		}

@@ -56,4 +56,9 @@ public class LocationFragment extends Fragment {
 		return view;
 	}
 
+	public void updateData() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

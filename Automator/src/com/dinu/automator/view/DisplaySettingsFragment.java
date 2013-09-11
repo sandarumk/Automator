@@ -10,10 +10,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.dinu.automator.DisplaySettings;
 import com.dinu.automator.R;
 import com.dinu.automator.view.SleepDialogFragment.SleepDialogListener;
 
 public class DisplaySettingsFragment extends Fragment implements SleepDialogListener {
+	private DisplaySettings display;
+
+	public DisplaySettings getDisplay() {
+		return display;
+	}
+
+	public void setDisplay(DisplaySettings display) {
+		this.display = display;
+	}
 
 	private static DisplaySettingsFragment displaySettings;
 	private View view;
@@ -69,6 +79,11 @@ public class DisplaySettingsFragment extends Fragment implements SleepDialogList
 	public void onDialogClick(DialogFragment dialog, int which) {
 		// TODO Auto-generated method stub
 
+	}
+
+	public void updateData() {
+		// TODO Auto-generated method stub
+		
 	};
 
 }

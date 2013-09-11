@@ -172,13 +172,13 @@ public class DataStore {
 		profiles.remove(profile);
 	}
 	
-	public static List<Profile> getProfile(){
-		profiles=new ArrayList<Profile>();
-		Profile profile= new Profile(1,"pro1");
-		profiles.add(profile);
-		profiles.add(new Profile(1,"pro2"));
-		return profiles;
-	}
+//	public static List<Profile> getProfile(){
+//		profiles=new ArrayList<Profile>();
+//		Profile profile= new Profile(1,"pro1");
+//		profiles.add(profile);
+//		profiles.add(new Profile(1,"pro2"));
+//		return profiles;
+//	}
 	
 
 }

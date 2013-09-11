@@ -1461,16 +1461,16 @@ containing a value of this type.
         public static final int abs__textButton=0x7f05001b;
         public static final int abs__title=0x7f050023;
         public static final int abs__up=0x7f05000b;
-        public static final int action_delete=0x7f050063;
-        public static final int action_new_profile=0x7f050061;
-        public static final int action_save=0x7f050062;
-        public static final int action_settings=0x7f050060;
+        public static final int action_delete=0x7f050064;
+        public static final int action_new_profile=0x7f050062;
+        public static final int action_save=0x7f050063;
+        public static final int action_settings=0x7f050061;
         public static final int bottom=0x7f050013;
         public static final int button_setLocation_onMap=0x7f05004c;
         public static final int checkBox_autorotation=0x7f050049;
-        public static final int checkBox_vibration=0x7f05005d;
+        public static final int checkBox_vibration=0x7f05005e;
         public static final int check_pulse_notification=0x7f05004b;
-        public static final int check_silent=0x7f05005f;
+        public static final int check_silent=0x7f050060;
         public static final int disableHome=0x7f050009;
         public static final int editText_longitude=0x7f050052;
         public static final int editText_lttitude=0x7f050050;
@@ -1489,6 +1489,7 @@ containing a value of this type.
         public static final int normal=0x7f050001;
         public static final int pager=0x7f05003e;
         public static final int profile_list_row_button=0x7f050058;
+        public static final int profile_name_save=0x7f05005a;
         public static final int profle_list_row_text=0x7f050059;
         public static final int progressBar_Splash=0x7f050042;
         public static final int radiobutton_entering=0x7f050056;
@@ -1496,7 +1497,7 @@ containing a value of this type.
         public static final int radiogroup_entering=0x7f050055;
         public static final int satellite=0x7f050015;
         public static final int seekBar_brightness=0x7f050045;
-        public static final int seekBar_volume=0x7f05005b;
+        public static final int seekBar_volume=0x7f05005c;
         public static final int showCustom=0x7f050008;
         public static final int showHome=0x7f050005;
         public static final int showTitle=0x7f050007;
@@ -1510,11 +1511,11 @@ containing a value of this type.
         public static final int textView_name=0x7f05004d;
         public static final int textView_pulse_notification_light=0x7f05004a;
         public static final int textView_radius=0x7f050053;
-        public static final int textView_silent=0x7f05005e;
+        public static final int textView_silent=0x7f05005f;
         public static final int textView_sleep=0x7f050046;
         public static final int textView_sleep_time=0x7f050047;
-        public static final int textView_vibration=0x7f05005c;
-        public static final int textView_volume=0x7f05005a;
+        public static final int textView_vibration=0x7f05005d;
+        public static final int textView_volume=0x7f05005b;
         public static final int top=0x7f050014;
         public static final int triangle=0x7f050011;
         public static final int underline=0x7f050012;
@@ -1564,10 +1565,11 @@ containing a value of this type.
         public static final int location_fragment=0x7f03001f;
         public static final int network_settings_fragment=0x7f030020;
         public static final int profile_list_row=0x7f030021;
-        public static final int set_location_dialog=0x7f030022;
-        public static final int sherlock_spinner_dropdown_item=0x7f030023;
-        public static final int sherlock_spinner_item=0x7f030024;
-        public static final int sound_setting_fragment=0x7f030025;
+        public static final int save_dialog_fragment=0x7f030022;
+        public static final int set_location_dialog=0x7f030023;
+        public static final int sherlock_spinner_dropdown_item=0x7f030024;
+        public static final int sherlock_spinner_item=0x7f030025;
+        public static final int sound_setting_fragment=0x7f030026;
     }
     public static final class menu {
         public static final int alarm=0x7f0d0000;

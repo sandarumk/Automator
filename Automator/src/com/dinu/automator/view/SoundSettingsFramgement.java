@@ -14,7 +14,7 @@ import android.widget.CheckBox;
 import android.widget.SeekBar;
 
 public class SoundSettingsFramgement extends Fragment {
-	SoundProfile sound;
+	private SoundProfile sound;
 
 	private static SoundSettingsFramgement soundSettings;
 
@@ -51,6 +51,31 @@ public class SoundSettingsFramgement extends Fragment {
 	private SoundSettingsFramgement() {
 		super();
 
-	};
+	}
+
+	public SoundProfile getSound() {
+		return sound;
+	}
+
+	public void setSound(SoundProfile sound) {
+		this.sound = sound;
+	}
+	
+	public void updateData() {
+
+		 //saving in sound object SeekBar seek=(SeekBar)
+		//view.findViewById(R.id.seekBar_volume); int
+		// volume=seek.getProgress(); sound.setRingingVolume(volume);
+		//
+		// CheckBox chkSilent= (CheckBox)view.findViewById(R.id.check_silent);
+		// boolean silent = chkSilent.isChecked(); sound.setSilentMode(silent);
+		//
+		//
+		// CheckBox chkVibration=
+		// (CheckBox)view.findViewById(R.id.checkBox_vibration); boolean
+		// vibration = chkVibration.isChecked();
+		// sound.setVibrationMode(vibration);
+
+	}
 
 }
