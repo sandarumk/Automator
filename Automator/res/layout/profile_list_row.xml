@@ -3,15 +3,17 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
+ 
     <ToggleButton
         android:id="@+id/profile_list_row_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/selector_switch"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
-        android:focusable="false"
-        android:text="@string/profile_enable_button"
-         />
+        android:textOff=""
+        android:textOn="" 
+        android:focusable="false"/>
 
     <TextView
         android:id="@+id/profle_list_row_text"

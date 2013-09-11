@@ -13,7 +13,7 @@
     </style>
 
     <!-- Application theme. -->
-    <style name="AppTheme" parent="@style/Theme.Sherlock.Light.DarkActionBar">
+    <style name="AppTheme" parent="@style/Theme.Sherlock">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
     
@@ -39,6 +39,16 @@
 
     <style name="CustomTabPageIndicator.Text" parent="android:TextAppearance.Medium">
         <item name="android:typeface">monospace</item>
+    </style>
+    
+      <style name="Theme.VPI" parent="AppTheme">
+        <item name="vpiTabPageIndicatorStyle">@style/Widget.TabPageIndicator</item>
+    </style>
+
+    <!-- "Implementation" of VPI theme. We just set the text size and color. -->
+    <style name="CustomTabPageIndicator" parent="Widget.TabPageIndicator">
+        <item name="android:textSize">50dip</item>
+        <item name="android:textColor">#FFB33E3E</item>
     </style>
 
 </resources>
