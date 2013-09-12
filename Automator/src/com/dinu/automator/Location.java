@@ -5,13 +5,25 @@ import java.io.Serializable;
 public class Location implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
-	private long langitude;
-	private long lattitude;
-	private long radius;
+	private Double langitude;
+	private Double lattitude;
+	private int radius;
 	private String name;
 	private boolean entering;
 	
 	
+	
+	
+
+	public Location(double langitude, double lattitude) {
+		
+		this.langitude = langitude;
+		this.lattitude = lattitude;
+		this.entering = true;
+		radius=500;
+	}
+
+
 
 	public String getName() {
 		return name;
@@ -37,25 +49,25 @@ public class Location implements Serializable{
 
 
 
-	public long getLangitude() {
+	public Double getLangitude() {
 		return langitude;
 	}
 
 
 
-	public void setLangitude(long langitude) {
+	public void setLangitude(Double langitude) {
 		this.langitude = langitude;
 	}
 
 
 
-	public long getLattitude() {
+	public Double getLattitude() {
 		return lattitude;
 	}
 
 
 
-	public void setLattitude(long lattitude) {
+	public void setLattitude(Double lattitude) {
 		this.lattitude = lattitude;
 	}
 
@@ -67,13 +79,13 @@ public class Location implements Serializable{
 
 
 
-	public void setRadius(long radius) {
+	public void setRadius(int radius) {
 		this.radius = radius;
 	}
 
 
 
-	public Location(long langitude, long lattitude, long radius){
+	public Location(Double langitude, Double lattitude, int radius){
 		this.langitude=langitude;
 		this.langitude=lattitude;
 		this.radius=radius;

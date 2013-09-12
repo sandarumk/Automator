@@ -2,12 +2,10 @@ package com.dinu.automator.activity;
 
 import android.app.Activity;
 import android.app.DialogFragment;
-import android.location.Location;
 import android.os.Bundle;
 
 import com.dinu.automator.R;
 import com.dinu.automator.view.SetLocationDialogFragment;
-import com.google.android.gms.location.LocationClient;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMap.OnMapLongClickListener;
 import com.google.android.gms.maps.GoogleMap.OnMarkerDragListener;
@@ -92,7 +90,7 @@ public class LocatorActivity extends Activity {
 
 			@Override
 			public void onMapLongClick(LatLng point) {
-				// TODO Auto-generated method stub
+			
 				marker1.setPosition(point);
 				CircleOptions circleOptions = new CircleOptions().center(marker1.getPosition()).radius(1000);
 				Circle circle = map.addCircle(circleOptions);

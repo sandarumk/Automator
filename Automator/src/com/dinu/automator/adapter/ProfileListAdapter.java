@@ -13,6 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 
 
@@ -51,13 +52,21 @@ public class ProfileListAdapter extends ArrayAdapter<Profile> {
 
 		if(profile != null && profile.getName() != null){
 			text.setText(profile.getName());
-			Button button= (Button) view.findViewById(R.id.profile_list_row_button);
-			button.setOnClickListener(new View.OnClickListener() {
+			final ToggleButton switchButton = (ToggleButton)view.findViewById(R.id.profile_list_row_button);
+		
+			switchButton.setOnClickListener(new View.OnClickListener() {
 				
 				@Override
 				public void onClick(View v) {
-					// TODO Auto-generated method stub
-					Toast.makeText(context, "button pressed " + profile.getName(), Toast.LENGTH_LONG).show();;
+					// enable or disable profile
+					if (switchButton.isChecked()==true){
+						Toast.makeText(context, "enabled profile " + profile.getName(), Toast.LENGTH_LONG).show();
+						profile.setEnable(true);
+					}else if (switchButton.isChecked()== false){
+						Toast.makeText(context, "disabled profile " + profile.getName(), Toast.LENGTH_LONG).show();
+						profile.setEnable(false);
+					}
+				
 				}
 			});
 			}

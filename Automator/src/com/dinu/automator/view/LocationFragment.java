@@ -16,14 +16,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.HeterogeneousExpandableList;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.SeekBar;
 
 public class LocationFragment extends Fragment {
 	Button setLocationMap;
 	private static LocationFragment locationFragment;
 	private Location location;
+	private View view;
 
 	public Location getLocation() {
 		return location;
@@ -49,13 +53,13 @@ public class LocationFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-		View view = inflater.inflate(R.layout.location_fragment, null);
+		view = inflater.inflate(R.layout.location_fragment, null);
 		setLocationMap = (Button) view.findViewById(R.id.button_setLocation_onMap);
 		setLocationMap.setOnClickListener(new View.OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
+				
 				Activity activity = getActivity();
 				if (activity != null) {
 					startActivity(new Intent(activity, LocatorActivity.class));
@@ -63,114 +67,33 @@ public class LocationFragment extends Fragment {
 
 			}
 		});
-		/*
-		final EditText name= (EditText)view.findViewById(R.id.editText_name);
-		name.addTextChangedListener(new TextWatcher() {
-			
-			@Override
-			public void onTextChanged(CharSequence s, int start, int before, int count) {
-				
-				
-			}
-			
-			@Override
-			public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-				
-				
-			}
-			
-			@Override
-			public void afterTextChanged(Editable s) {
-				location.setName(name.getText().toString());
-				
-			}
-		});
 		
-		final EditText longitude= (EditText)view.findViewById(R.id.editText_longitude);
-		longitude.addTextChangedListener(new TextWatcher() {
-			
-			@Override
-			public void onTextChanged(CharSequence s, int start, int before, int count) {
-				
-				
-			}
-			
-			@Override
-			public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-				
-				
-			}
-			
-			@Override
-			public void afterTextChanged(Editable s) {
-				location.setLangitude(Integer.parseInt(longitude.getText().toString()));
-				
-			}
-		});
-		
-		final EditText lattitude= (EditText)view.findViewById(R.id.editText_lttitude);
-		lattitude.addTextChangedListener(new TextWatcher() {
-			
-			@Override
-			public void onTextChanged(CharSequence s, int start, int before, int count) {
-				
-				
-			}
-			
-			@Override
-			public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-				
-				
-			}
-			
-			@Override
-			public void afterTextChanged(Editable s) {
-				location.setLattitude(Integer.parseInt(lattitude.getText().toString()));
-				
-			}
-		});
-			
-				final EditText radius= (EditText)view.findViewById(R.id.editText_radius);
-				longitude.addTextChangedListener(new TextWatcher() {
-					
-					@Override
-					public void onTextChanged(CharSequence s, int start, int before, int count) {
-						
-						
-					}
-					
-					@Override
-					public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-						
-						
-					}
-					
-					@Override
-					public void afterTextChanged(Editable s) {
-						location.setRadius(Integer.parseInt(radius.getText().toString()));
-						
-					}
-				});
-				
-				RadioGroup entering= (RadioGroup) view.findViewById(R.id.radiogroup_entering);
-				entering.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-					
-					@Override
-					public void onCheckedChanged(RadioGroup group, int checkedId) {
-						if(checkedId==0){
-							location.setEntering(true);
-						}else{
-							location.setEntering(false);
-						}
-				
-					}
-				});*/
-	
 		return view;
 	}
 
 	public void updateData() {
-		// TODO Auto-generated method stub
+		
+		if (view != null && location !=null) {
+			
+		EditText name= (EditText)view.findViewById(R.id.editText_name);
+		location.setName(name.getText().toString());
+		
+		EditText longitude= (EditText)view.findViewById(R.id.editText_longitude);
+		location.setLangitude(Double.parseDouble(longitude.getText().toString()));
+		
+		EditText lattitude= (EditText)view.findViewById(R.id.editText_lttitude);
+		location.setLattitude(Double.parseDouble(lattitude.getText().toString()));
+		
+		EditText radius=(EditText)view.findViewById(R.id.editText_radius);
+		location.setRadius(Integer.parseInt(radius.getText().toString()));
+		
+		RadioButton entering=(RadioButton)view.findViewById(R.id.radiobutton_entering);
+		location.setEntering(entering.isChecked());
+		
+		
+		
+			
+		}
 		
 	}
 	

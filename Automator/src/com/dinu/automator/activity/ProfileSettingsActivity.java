@@ -44,7 +44,7 @@ public class ProfileSettingsActivity extends SherlockFragmentActivity {
 		index = getIntent().getIntExtra(Constant.INTENT_EXTRA_PROFILE_INDEX, 0);
 
 		if (index < 0) {
-			profile = new Profile();
+			profile = new Profile(this);
 		} else {
 			profile = DataStore.getProfileList().get(index);
 		}
@@ -53,7 +53,7 @@ public class ProfileSettingsActivity extends SherlockFragmentActivity {
 		DisplaySettingsFragment.getInstance().setDisplay(profile.getDisplay());
 		NetworkSettingFragment.getInstance().setNetwork(profile.getNetwork());
 		SetBatteryLevelFragment.getInstance().setBattryLevel(profile.getBatteryLevel());
-		LocationFragment.getInstance().setLocation(profile.getLocations());
+		LocationFragment.getInstance().setLocation(profile.getLocations(this));
 		
 
 		FragmentPagerAdapter adapter = new TabbedPaneAdapter(getSupportFragmentManager());
@@ -95,6 +95,7 @@ public class ProfileSettingsActivity extends SherlockFragmentActivity {
 			//save the current selected profile
 		SoundSettingsFramgement.getInstance().updateData(); 
 		DisplaySettingsFragment.getInstance().updateData();
+		//LocationFragment.getInstance().updateData();
 			
 
 			if (index < 0) {

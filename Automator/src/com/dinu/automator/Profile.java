@@ -3,6 +3,10 @@ package com.dinu.automator;
 
 import java.io.Serializable;
 
+import android.content.Context;
+
+import com.littlefluffytoys.littlefluffylocationlibrary.LocationInfo;
+
 
 
 
@@ -15,15 +19,21 @@ public class Profile implements Serializable{
 	private SoundProfile sounds;
 	private DisplayProfile display;
 	private NetworkProfile network;
-	private Location locations;
+	private Location location;
 	private BatteryLevel batteryLevel;
 	boolean enable;
 	
 
 	
-	public Profile(){
+	public Profile(Context context){
 		sounds=new SoundProfile(0,false,false);
-		//display= new DisplayProfile(0, autoRotation, sleep, pulse_notification_light)
+		display= new DisplayProfile(0, false, 30, false);
+		
+		LocationInfo latestInfo = new LocationInfo(context);
+		Double lattitude = (double)latestInfo.lastLat;
+		Double longitude = (double) latestInfo.lastLong;
+		location= new Location(longitude, lattitude);
+		
 		enable=true;
 	}
 
@@ -73,6 +83,9 @@ public class Profile implements Serializable{
 	}
 
 	public DisplayProfile getDisplay() {
+		if(display==null){
+			display=new DisplayProfile(0, false, 30, false);
+		}
 		return display;
 	}
 
@@ -88,12 +101,18 @@ public class Profile implements Serializable{
 		this.network = network;
 	}
 
-	public Location getLocations() {
-		return locations;
+	public Location getLocations(Context context) {
+		if (location==null){
+			LocationInfo latestInfo = new LocationInfo(context);
+			Double lattitude = (double)latestInfo.lastLat;
+			Double longitude = (double) latestInfo.lastLong;
+			location= new Location(longitude, lattitude);
+		}
+		return location;
 	}
 
 	public void setLocations(Location locations) {
-		this.locations = locations;
+		this.location = locations;
 	}
 
 	public BatteryLevel getBatteryLevel() {
