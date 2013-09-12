@@ -4,6 +4,7 @@
         android:id="@+id/action_new_profile"
         android:orderInCategory="100"
         android:showAsAction="always"
-        android:title="@string/action_new"/>
+        android:title="@string/action_new"
+        android:icon="@drawable/add_new_icon"/>
 
 </menu>

@@ -6,13 +6,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.io.Serializable;
 import java.io.StreamCorruptedException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Vector;
 
-import android.R.string;
 import android.content.Context;
 
 public class DataStore {
@@ -23,6 +20,35 @@ public class DataStore {
 	private static List<Profile> profiles;
 	private static List<Alarm> alarms;
 	private static List<Sms> sms;
+	private static boolean profileEnabled;
+	private static boolean alarmEnabled;
+	private static boolean smsEnabled;
+	
+	
+
+	public static boolean isProfileEnabled() {
+		return profileEnabled;
+	}
+
+	public static void setProfileEnabled(boolean profileEnabled) {
+		DataStore.profileEnabled = profileEnabled;
+	}
+
+	public static boolean isAlarmEnabled() {
+		return alarmEnabled;
+	}
+
+	public static void setAlarmEnabled(boolean alarmEnabled) {
+		DataStore.alarmEnabled = alarmEnabled;
+	}
+
+	public static boolean isSmsEnabled() {
+		return smsEnabled;
+	}
+
+	public static void setSmsEnabled(boolean smsEnabled) {
+		DataStore.smsEnabled = smsEnabled;
+	}
 
 	public static void saveData(Context context) {
 		saveAlarms(context);
@@ -160,6 +186,10 @@ public class DataStore {
 
 	}
 	public static List<Profile> getProfileList(){
+		if(profiles == null){
+			profiles = new ArrayList<Profile>();
+		}
+		
 		return profiles;
 	}
 	
@@ -172,13 +202,6 @@ public class DataStore {
 		profiles.remove(profile);
 	}
 	
-//	public static List<Profile> getProfile(){
-//		profiles=new ArrayList<Profile>();
-//		Profile profile= new Profile(1,"pro1");
-//		profiles.add(profile);
-//		profiles.add(new Profile(1,"pro2"));
-//		return profiles;
-//	}
-	
+
 
 }

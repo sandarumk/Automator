@@ -1,14 +1,16 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
 
-    
-       <item android:id="@+id/action_save" android:orderInCategory="100" android:showAsAction="always" android:title="@string/action_save" />
-       <item
-        android:id="@+id/action_delete"
+    <item
+        android:id="@+id/action_save"
+        android:icon="@drawable/save_icon"
         android:orderInCategory="100"
         android:showAsAction="always"
-        android:title="@string/action_delete"
-        android:icon="@drawable/delete"/>
-    
-    
+        android:title="@string/action_save"/>
+    <item
+        android:id="@+id/action_delete"
+        android:icon="@drawable/delete_profile_icon"
+        android:orderInCategory="100"
+        android:showAsAction="always"
+        android:title="@string/action_delete"/>
 
 </menu>

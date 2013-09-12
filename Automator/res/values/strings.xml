@@ -50,6 +50,7 @@
     <string name="display_fragment_autorotation">Auto-rotate Screen</string>
     <string name="display_fragment_sleep">Sleep</string>
     <string name="display_fragment_pulse_notification">Pulse Notification Light</string>
+    <string name="profile_activity_title">Profiles</string>
   <string-array name="sleep">
         <item >15 sec</item>
         <item >30 sec</item>

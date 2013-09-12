@@ -1,18 +1,17 @@
 package com.dinu.automator.activity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.ToggleButton;
 
+import com.actionbarsherlock.app.SherlockActivity;
+import com.actionbarsherlock.view.MenuItem;
 import com.dinu.automator.DataStore;
 import com.dinu.automator.R;
 
-public class MainActivity extends Activity {
+public class MainActivity extends SherlockActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -20,42 +19,98 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 		DataStore.retrieveData(this);
 
-		ListView mainMenu = (ListView) findViewById(R.id.listView_main);
-		String[] mainMenuItems = { getResources().getString(R.string.list_row_profile),
-				getResources().getString(R.string.list_row_alarm), getResources().getString(R.string.list_row_sms) };// ,getResources().getString(R.string.list_row_settings)};
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.profile_list_row,
-				R.id.profle_list_row_text, mainMenuItems);
-		mainMenu.setAdapter(adapter);
+		// handle profile
+		TextView profileView = (TextView) findViewById(R.id.main_menu_profile_text);
+		final ToggleButton enableProfile = (ToggleButton) findViewById(R.id.enable_profile_switch);
 
-		mainMenu.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+		// handle click on the profile text view
+		profileView.setOnClickListener(new View.OnClickListener() {
 
 			@Override
-			public void onItemClick(AdapterView<?> parent, View itemClicked, int position, long id) {
-
-				if (position == 0) {
-					startActivity(new Intent(MainActivity.this, ProfileActivity.class));
-				} else if (position == 1) {
-					startActivity(new Intent(MainActivity.this, AlarmActivity.class));
-				} else if (position == 2) {
-					startActivity(new Intent(MainActivity.this, SmsActivity.class));
-				} else if (position == 3) {
-					startActivity(new Intent(MainActivity.this, Settings.class));
-					// startActivity(new
-					// Intent(MainActivity.this,LocatorActivity.class));
-				}
-				// TODO Auto-generated method stub
-
+			public void onClick(View v) {
+				// go to profile list
+				startActivity(new Intent(MainActivity.this, ProfileActivity.class));
 			}
-
 		});
+
+		// handle click on the enable button
+		enableProfile.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// enable location based profile service
+				DataStore.setProfileEnabled(enableProfile.isChecked());
+			}
+		});
+		
+		// handle alarm
+				TextView alarmView = (TextView) findViewById(R.id.main_menu_alarm_text);
+				final ToggleButton enableAlarm= (ToggleButton) findViewById(R.id.enable_alarm_switch);
+
+				// handle click on the alarm text view
+				alarmView.setOnClickListener(new View.OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+						// go to alarm list
+						startActivity(new Intent(MainActivity.this, AlarmActivity.class));
+					}
+				});
+
+				// handle click on the enable button
+				enableAlarm.setOnClickListener(new View.OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+						// enable location based alarm service
+						DataStore.setAlarmEnabled(enableAlarm.isChecked());
+					}
+				});
+				
+				// handle sms 
+				TextView smsView = (TextView) findViewById(R.id.main_menu_sms_text);
+				final ToggleButton enableSms = (ToggleButton) findViewById(R.id.enable_sms_switch);
+
+				// handle click on the sms text view
+				smsView.setOnClickListener(new View.OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+						// go to sms list
+						startActivity(new Intent(MainActivity.this, SmsActivity.class));
+					}
+				});
+
+				// handle click on the enable button
+				enableSms.setOnClickListener(new View.OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+						// enable location based alarm service
+						DataStore.setSmsEnabled(enableSms.isChecked());
+					}
+				});
 
 	}
 
 	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
+	public boolean onCreateOptionsMenu(com.actionbarsherlock.view.Menu menu) {
+		getSupportMenuInflater().inflate(R.menu.main, menu);
+		getActionBar().setTitle(R.string.app_name);
 		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case android.R.id.home:
+			finish();
+			return true;
+		case R.id.action_settings:
+			startActivity(new Intent(MainActivity.this, Settings.class));
+		default:
+			return super.onOptionsItemSelected(item);
+		}
 	}
 
 }

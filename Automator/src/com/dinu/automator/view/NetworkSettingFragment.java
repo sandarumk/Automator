@@ -1,6 +1,6 @@
 package com.dinu.automator.view;
 
-import com.dinu.automator.NetworkSettings;
+import com.dinu.automator.NetworkProfile;
 import com.dinu.automator.R;
 
 import android.os.Bundle;
@@ -11,14 +11,14 @@ import android.view.ViewGroup;
 
 public class NetworkSettingFragment extends Fragment {
 	
-	private NetworkSettings network;
+	private NetworkProfile network;
 	private static NetworkSettingFragment networkFragment;
 	
-	public NetworkSettings getNetwork() {
+	public NetworkProfile getNetwork() {
 		return network;
 	}
 
-	public void setNetwork(NetworkSettings network) {
+	public void setNetwork(NetworkProfile network) {
 		this.network = network;
 	}
 	

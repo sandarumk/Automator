@@ -1,12 +1,10 @@
 package com.dinu.automator.activity;
 
-import android.os.Bundle;
 import android.app.Activity;
+import android.os.Bundle;
 import android.view.Menu;
 
 import com.dinu.automator.R;
-import com.dinu.automator.R.layout;
-import com.dinu.automator.R.menu;
 
 public class SmsActivity extends Activity {
 

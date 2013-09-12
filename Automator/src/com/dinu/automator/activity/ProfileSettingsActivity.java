@@ -1,6 +1,7 @@
 package com.dinu.automator.activity;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,7 +11,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
 
@@ -24,10 +24,9 @@ import com.dinu.automator.view.ConfirmDeleteDialogFragment;
 import com.dinu.automator.view.DisplaySettingsFragment;
 import com.dinu.automator.view.LocationFragment;
 import com.dinu.automator.view.NetworkSettingFragment;
+import com.dinu.automator.view.SetBatteryLevelFragment;
 import com.dinu.automator.view.SoundSettingsFramgement;
 import com.dinu.automator.view.TestFragment;
-
-import com.dinu.automator.view.SetBatteryLevelFragment;
 import com.viewpagerindicator.TabPageIndicator;
 
 public class ProfileSettingsActivity extends SherlockFragmentActivity {
@@ -53,7 +52,9 @@ public class ProfileSettingsActivity extends SherlockFragmentActivity {
 		SoundSettingsFramgement.getInstance().setSound(profile.getSounds());
 		DisplaySettingsFragment.getInstance().setDisplay(profile.getDisplay());
 		NetworkSettingFragment.getInstance().setNetwork(profile.getNetwork());
-	
+		SetBatteryLevelFragment.getInstance().setBattryLevel(profile.getBatteryLevel());
+		LocationFragment.getInstance().setLocation(profile.getLocations());
+		
 
 		FragmentPagerAdapter adapter = new TabbedPaneAdapter(getSupportFragmentManager());
 
@@ -73,12 +74,14 @@ public class ProfileSettingsActivity extends SherlockFragmentActivity {
 	@Override
 	public boolean onCreateOptionsMenu(com.actionbarsherlock.view.Menu menu) {
 		getSupportMenuInflater().inflate(R.menu.profile_settings, menu);
+//		getActionBar().setTitle(profile.getName());
+		getSupportActionBar().setTitle(profile.getName());
 		return true;
 	}
-	
+
 	@Override
 	public void onBackPressed() {
-		// TODO Auto-generated method stub
+	
 		super.onBackPressed();
 	}
 
@@ -89,75 +92,78 @@ public class ProfileSettingsActivity extends SherlockFragmentActivity {
 			finish();
 			return true;
 		case R.id.action_save:
-		
-			SoundSettingsFramgement.getInstance().updateData();
+			//save the current selected profile
+		SoundSettingsFramgement.getInstance().updateData(); 
+		DisplaySettingsFragment.getInstance().updateData();
 			
-			if(index < 0 ){
+
+			if (index < 0) {
 				DataStore.addProfile(profile);
 				index = DataStore.getProfileList().size() - 1;
-				showSaveDialog();
-				
-			}else{
+				showSaveDialog(this);
+
+			} else {
 				DataStore.saveProfiles(this);
-				startActivity(new Intent(ProfileSettingsActivity.this, ProfileActivity.class));
+
+				finish();
 			}
-			
-			
-			
 
 			return true;
+			
 		case R.id.action_delete:
-			DialogFragment fragment = new ConfirmDeleteDialogFragment();
-			fragment.show(getSupportFragmentManager(), "Delete");
-			DataStore.deleteProfile(profile);
-
 			// delete the current selected profile
-
+			showDeleteDialog();
 		default:
 			return super.onOptionsItemSelected(item);
 		}
 	}
 
-	
+	private void showSaveDialog(final Context context) {
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		LayoutInflater inflator = this.getLayoutInflater();
+		View view = inflator.inflate(R.layout.save_dialog_fragment, null);
 
-	private void showSaveDialog() {
-		AlertDialog.Builder builder= new AlertDialog.Builder(this);
-		LayoutInflater inflator= this.getLayoutInflater();
-		View view=inflator.inflate(R.layout.save_dialog_fragment, null);
-	
-		final EditText text= (EditText) view.findViewById(R.id.profile_name_save);
-		text.setText("Profile Name");
+		final EditText text = (EditText) view.findViewById(R.id.profile_name_save);
+		text.setHint("Profile Name");
 		builder.setView(view);
 		builder.setPositiveButton(R.string.dialog_button_save, new DialogInterface.OnClickListener() {
-			
+
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
-				// TODO Auto-generated method stub
-				
+			
 				profile.setName(text.getText().toString());
-				startActivity(new Intent(ProfileSettingsActivity.this, ProfileActivity.class));
+				DataStore.saveProfiles(context);
+				finish();
+
+			}
+		});
+
+		builder.create().show();
+
+	}
+	
+	private void showDeleteDialog(){
+		AlertDialog.Builder builder= new AlertDialog.Builder(this);
+		builder.setMessage(R.string.dialog_message_confirm_delete).setPositiveButton(R.string.dialog_button_delete, new DialogInterface.OnClickListener() {
+		
+			@Override
+			public void onClick(DialogInterface dialog, int id) {
+				if(index>=0){
+					DataStore.deleteProfile(profile);	
+				}
+				startActivity(new Intent (ProfileSettingsActivity.this,ProfileActivity.class));
+				
+			}
+		}).setNegativeButton(R.string.dialog_button_cancel, new DialogInterface.OnClickListener() {
+			
+			@Override
+			public void onClick(DialogInterface dialog, int id) {
+			
 				
 			}
 		});
-		
-		
-	
-		
-		
-	 
-	  builder.create().show();;
-		// TODO Auto-generated method stub
-		
+		builder.create().show();	
 	}
-
-
-
-	// @Override
-	// public boolean onCreateOptionsMenu(Menu menu) {
-	// // Inflate the menu; this adds items to the action bar if it is present.
-	// getMenuInflater().inflate(R.menu.profile_settings, menu);
-	// return true;
-	// }
 
 	class TabbedPaneAdapter extends FragmentPagerAdapter {
 		public TabbedPaneAdapter(FragmentManager fm) {
@@ -169,7 +175,7 @@ public class ProfileSettingsActivity extends SherlockFragmentActivity {
 			if (position % CONTENT.length == 0) {
 				return LocationFragment.getInstance();
 			} else if (position % CONTENT.length == 1) {
-				return SetBatteryLevelFragment.newInstance();
+				return SetBatteryLevelFragment.getInstance();
 			} else if (position % CONTENT.length == 2) {
 				return SoundSettingsFramgement.getInstance();
 			} else if (position % CONTENT.length == 3) {

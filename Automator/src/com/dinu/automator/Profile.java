@@ -1,31 +1,30 @@
 package com.dinu.automator;
 
 
-import java.util.Iterator;
-import java.util.List;
+import java.io.Serializable;
 
 
 
 
 
-public class Profile {
-	int id;
-	String name;
-	SoundProfile sounds;
-	DisplaySettings display;
-	NetworkSettings network;
-	Location[] locations;
-	BatteryLevel batteryLevel;
+public class Profile implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
+	private int id;
+	private String name;
+	private SoundProfile sounds;
+	private DisplayProfile display;
+	private NetworkProfile network;
+	private Location locations;
+	private BatteryLevel batteryLevel;
 	boolean enable;
 	
-	public Profile(int i, String stringName) {
-		id=i;
-		name=stringName;
-		// TODO Auto-generated constructor stub
-	}
+
 	
 	public Profile(){
-		
+		sounds=new SoundProfile(0,false,false);
+		//display= new DisplayProfile(0, autoRotation, sleep, pulse_notification_light)
+		enable=true;
 	}
 
 	public void activate(){
@@ -63,6 +62,9 @@ public class Profile {
 	}
 
 	public SoundProfile getSounds() {
+		if(sounds==null){
+			sounds=new SoundProfile(0,false,false);
+		}
 		return sounds;
 	}
 
@@ -70,27 +72,27 @@ public class Profile {
 		this.sounds = sounds;
 	}
 
-	public DisplaySettings getDisplay() {
+	public DisplayProfile getDisplay() {
 		return display;
 	}
 
-	public void setDisplay(DisplaySettings display) {
+	public void setDisplay(DisplayProfile display) {
 		this.display = display;
 	}
 
-	public NetworkSettings getNetwork() {
+	public NetworkProfile getNetwork() {
 		return network;
 	}
 
-	public void setNetwork(NetworkSettings network) {
+	public void setNetwork(NetworkProfile network) {
 		this.network = network;
 	}
 
-	public Location[] getLocations() {
+	public Location getLocations() {
 		return locations;
 	}
 
-	public void setLocations(Location[] locations) {
+	public void setLocations(Location locations) {
 		this.locations = locations;
 	}
 

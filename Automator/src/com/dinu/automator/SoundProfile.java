@@ -1,20 +1,21 @@
 package com.dinu.automator;
 
 
-import android.content.Context;
-import android.media.AudioManager;
+import java.io.Serializable;
 
 
-public class SoundProfile {
-	private int ring_volume;
-	private boolean silent_mode;
+public class SoundProfile implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
+	private int ringVolume;
+	private boolean silentMode;
 	private boolean vibration;
 	//private boolean notification_vibration;
-	private AudioManager audioM;
+
 	
-	public SoundProfile(int ring_volume, boolean silent_mode, boolean vibration,boolean notification_vibration){
-		this.ring_volume=ring_volume;
-		this.silent_mode=silent_mode;
+	public SoundProfile(int ring_volume, boolean silent_mode, boolean vibration){
+		this.ringVolume=ring_volume;
+		this.silentMode=silent_mode;
 		this.vibration=vibration;
 	//	this.notification_vibration=notification_vibration;
 		
@@ -22,9 +23,31 @@ public class SoundProfile {
 	
 	public void activate(){
 	
-		
-			
 		}
+
+	public int getRingVolume() {
+		return ringVolume;
+	}
+
+	public void setRingVolume(int ringVolume) {
+		this.ringVolume = ringVolume;
+	}
+
+	public boolean isSilentMode() {
+		return silentMode;
+	}
+
+	public void setSilentMode(boolean silentMode) {
+		this.silentMode = silentMode;
+	}
+
+	public boolean isVibration() {
+		return vibration;
+	}
+
+	public void setVibration(boolean vibration) {
+		this.vibration = vibration;
+	}
 	}
 	
 	

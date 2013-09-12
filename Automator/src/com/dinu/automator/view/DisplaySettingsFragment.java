@@ -10,18 +10,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.dinu.automator.DisplaySettings;
+import com.dinu.automator.DisplayProfile;
 import com.dinu.automator.R;
 import com.dinu.automator.view.SleepDialogFragment.SleepDialogListener;
 
 public class DisplaySettingsFragment extends Fragment implements SleepDialogListener {
-	private DisplaySettings display;
+	private DisplayProfile display;
 
-	public DisplaySettings getDisplay() {
+	public DisplayProfile getDisplay() {
 		return display;
 	}
 
-	public void setDisplay(DisplaySettings display) {
+	public void setDisplay(DisplayProfile display) {
 		this.display = display;
 	}
 
