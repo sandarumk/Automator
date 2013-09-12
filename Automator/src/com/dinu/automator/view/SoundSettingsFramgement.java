@@ -1,19 +1,15 @@
 package com.dinu.automator.view;
 
-import com.dinu.automator.Profile;
-import com.dinu.automator.R;
-import com.dinu.automator.SoundProfile;
-
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.view.DragEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebView.FindListener;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.SeekBar;
+
+import com.dinu.automator.R;
+import com.dinu.automator.SoundProfile;
 
 public class SoundSettingsFramgement extends Fragment {
 	private SoundProfile sound;
@@ -41,44 +37,7 @@ public class SoundSettingsFramgement extends Fragment {
 		 chkvib.setChecked(sound.isVibration());
 		
 		}
-		/*
-		 * 
-		 * seek.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener()
-		 * {
-		 * 
-		 * @Override public void onStopTrackingTouch(SeekBar seekBar) {
-		 * 
-		 * 
-		 * }
-		 * 
-		 * @Override public void onStartTrackingTouch(SeekBar seekBar) {
-		 * 
-		 * 
-		 * }
-		 * 
-		 * @Override public void onProgressChanged(SeekBar seekBar, int
-		 * progress, boolean fromUser) { sound.setRing_volume(progress);
-		 * 
-		 * } });
-		 * 
-		 * 
-		 * chkSilent.setOnCheckedChangeListener(new
-		 * CompoundButton.OnCheckedChangeListener() {
-		 * 
-		 * @Override public void onCheckedChanged(CompoundButton buttonView,
-		 * boolean isChecked) { sound.setSilent_mode(isChecked);
-		 * 
-		 * } });
-		 * 
-		 *
-		 * chkvib.setOnCheckedChangeListener(new
-		 * CompoundButton.OnCheckedChangeListener() {
-		 * 
-		 * @Override public void onCheckedChanged(CompoundButton buttonView,
-		 * boolean isChecked) { sound.setVibration(isChecked);
-		 * 
-		 * } });
-		 */
+		
 		return view;
 
 	}

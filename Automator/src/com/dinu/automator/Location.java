@@ -73,7 +73,7 @@ public class Location implements Serializable{
 
 
 
-	public long getRadius() {
+	public int getRadius() {
 		return radius;
 	}
 

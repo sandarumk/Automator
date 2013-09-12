@@ -54,6 +54,35 @@ public class LocationFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
 		view = inflater.inflate(R.layout.location_fragment, null);
+		if (location !=null) {
+			EditText name= (EditText)view.findViewById(R.id.editText_name);
+			name.setText("");
+			if(location.getName()!=null){
+			name.setText(location.getName());
+			}
+			
+			EditText longitude= (EditText)view.findViewById(R.id.editText_longitude);
+			longitude.setText(location.getLangitude().toString());
+			
+			EditText lattitude= (EditText)view.findViewById(R.id.editText_lttitude);
+			lattitude.setText(location.getLattitude().toString());
+			
+			
+			EditText radius=(EditText)view.findViewById(R.id.editText_radius);
+			radius.setText(location.getRadius()+"");
+			
+			RadioButton entering=(RadioButton)view.findViewById(R.id.radiobutton_entering);
+			RadioButton leaving=(RadioButton)view.findViewById(R.id.radiobutton_leaving);
+			if(location.isEntering()==true){
+				entering.setChecked(true);
+				leaving.setChecked(false);
+			}else{
+				entering.setChecked(false);
+				leaving.setChecked(true);
+			}
+
+		
+			}
 		setLocationMap = (Button) view.findViewById(R.id.button_setLocation_onMap);
 		setLocationMap.setOnClickListener(new View.OnClickListener() {
 

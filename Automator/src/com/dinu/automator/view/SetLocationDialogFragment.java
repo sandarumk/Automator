@@ -50,8 +50,9 @@ public class SetLocationDialogFragment extends DialogFragment{
         builder.setMessage(R.string.title_dialog_set_location)
                .setPositiveButton(R.string.dialog_button_save, new DialogInterface.OnClickListener() {
                    public void onClick(DialogInterface dialog, int id) {
+                	   getActivity().finish();
                    
-                   startActivity(new Intent(getActivity(), ProfileSettingsActivity.class)); 
+                   
                    // save
                       
                    }

@@ -14,5 +14,10 @@ public class SoundSetting {
 		AudioManager am = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
 		am.setRingerMode(AudioManager.RINGER_MODE_VIBRATE);
 	}
+	
+	public static void setVolume(Context context,int volume){
+		AudioManager am = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
+		//am.setStreamVolume(streamType, index, flags);
+	}
 
 }

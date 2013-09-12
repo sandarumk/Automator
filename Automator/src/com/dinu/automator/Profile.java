@@ -28,11 +28,13 @@ public class Profile implements Serializable{
 	public Profile(Context context){
 		sounds=new SoundProfile(0,false,false);
 		display= new DisplayProfile(0, false, 30, false);
+		location=new Location(Constant.INITIAL_LONGITUDE,Constant.INITIAL_LATTITUDE);
 		
-		LocationInfo latestInfo = new LocationInfo(context);
-		Double lattitude = (double)latestInfo.lastLat;
-		Double longitude = (double) latestInfo.lastLong;
-		location= new Location(longitude, lattitude);
+//		LocationInfo latestInfo = new LocationInfo(context);
+//		latestInfo.refresh(context);
+//		Double lattitude = (double)latestInfo.lastLat;
+//		Double longitude = (double) latestInfo.lastLong;
+//		location= new Location(longitude, lattitude);
 		
 		enable=true;
 	}
@@ -103,10 +105,11 @@ public class Profile implements Serializable{
 
 	public Location getLocations(Context context) {
 		if (location==null){
-			LocationInfo latestInfo = new LocationInfo(context);
-			Double lattitude = (double)latestInfo.lastLat;
-			Double longitude = (double) latestInfo.lastLong;
-			location= new Location(longitude, lattitude);
+			location=new Location(Constant.INITIAL_LONGITUDE,Constant.INITIAL_LATTITUDE);
+//			LocationInfo latestInfo = new LocationInfo(context);
+//			Double lattitude = (double)latestInfo.lastLat;
+//			Double longitude = (double) latestInfo.lastLong;
+//			location= new Location(longitude, lattitude);
 		}
 		return location;
 	}

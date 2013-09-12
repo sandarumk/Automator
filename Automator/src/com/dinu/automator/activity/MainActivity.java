@@ -96,7 +96,7 @@ public class MainActivity extends SherlockActivity {
 	@Override
 	public boolean onCreateOptionsMenu(com.actionbarsherlock.view.Menu menu) {
 		getSupportMenuInflater().inflate(R.menu.main, menu);
-		getActionBar().setTitle(R.string.app_name);
+		getSupportActionBar().setTitle(R.string.app_name);
 		return true;
 	}
 

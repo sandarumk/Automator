@@ -74,7 +74,6 @@ public class ProfileSettingsActivity extends SherlockFragmentActivity {
 	@Override
 	public boolean onCreateOptionsMenu(com.actionbarsherlock.view.Menu menu) {
 		getSupportMenuInflater().inflate(R.menu.profile_settings, menu);
-//		getActionBar().setTitle(profile.getName());
 		getSupportActionBar().setTitle(profile.getName());
 		return true;
 	}
@@ -95,7 +94,7 @@ public class ProfileSettingsActivity extends SherlockFragmentActivity {
 			//save the current selected profile
 		SoundSettingsFramgement.getInstance().updateData(); 
 		DisplaySettingsFragment.getInstance().updateData();
-		//LocationFragment.getInstance().updateData();
+		LocationFragment.getInstance().updateData();
 			
 
 			if (index < 0) {
@@ -113,7 +112,7 @@ public class ProfileSettingsActivity extends SherlockFragmentActivity {
 			
 		case R.id.action_delete:
 			// delete the current selected profile
-			showDeleteDialog();
+			showDeleteDialog(this);
 		default:
 			return super.onOptionsItemSelected(item);
 		}
@@ -143,16 +142,17 @@ public class ProfileSettingsActivity extends SherlockFragmentActivity {
 
 	}
 	
-	private void showDeleteDialog(){
+	private void showDeleteDialog(final Context context){
 		AlertDialog.Builder builder= new AlertDialog.Builder(this);
 		builder.setMessage(R.string.dialog_message_confirm_delete).setPositiveButton(R.string.dialog_button_delete, new DialogInterface.OnClickListener() {
 		
 			@Override
 			public void onClick(DialogInterface dialog, int id) {
 				if(index>=0){
-					DataStore.deleteProfile(profile);	
+					DataStore.deleteProfile(profile);
+					DataStore.saveProfiles(context);
 				}
-				startActivity(new Intent (ProfileSettingsActivity.this,ProfileActivity.class));
+				finish();
 				
 			}
 		}).setNegativeButton(R.string.dialog_button_cancel, new DialogInterface.OnClickListener() {
