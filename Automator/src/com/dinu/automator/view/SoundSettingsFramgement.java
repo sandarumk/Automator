@@ -27,7 +27,6 @@ public class SoundSettingsFramgement extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
 		view = inflater.inflate(R.layout.sound_setting_fragment, null);
-		System.out.println(sound);
 		if(sound!=null){
 		SeekBar seek = (SeekBar) view.findViewById(R.id.seekBar_volume);
 		seek.setProgress(sound.getRingVolume());

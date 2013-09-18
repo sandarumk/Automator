@@ -2,30 +2,29 @@ package com.dinu.automator.adapter;
 
 import java.util.List;
 
-import com.dinu.automator.Profile;
 import com.dinu.automator.R;
+import com.dinu.automator.Sms;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
-public class ProfileListAdapter extends ArrayAdapter<Profile> {
+public class SmsListAdapter extends ArrayAdapter<Sms>{
 
-	private List<Profile> profiles;
+	private List<Sms> sms;
 	private Context context;
 	private int resource;
 	private int textViewResourceId;
 
-	public ProfileListAdapter(Context context, int resource, int textViewResourceId, List<Profile> objects) {
+	public SmsListAdapter(Context context, int resource, int textViewResourceId, List<Sms> objects) {
 
 		super(context, resource, textViewResourceId, objects);
-		this.profiles = objects;
+		this.sms = objects;
 		this.context = context;
 		this.resource = resource;
 		this.textViewResourceId = textViewResourceId;
@@ -44,12 +43,12 @@ public class ProfileListAdapter extends ArrayAdapter<Profile> {
 
 		TextView text = (TextView) view.findViewById(textViewResourceId);
 
-		if (profiles.size() > position) {
-			final Profile profile = profiles.get(position);
+		if (sms.size() > position) {
+			final Sms smsInstance = sms.get(position);
 
-			if (profile != null && profile.getName() != null) {
-				text.setText(profile.getName());
-				final ToggleButton switchButton = (ToggleButton) view.findViewById(R.id.profile_list_row_button);
+			if (smsInstance != null && smsInstance.getName() != null) {
+				text.setText(smsInstance.getName());
+				final ToggleButton switchButton = (ToggleButton) view.findViewById(R.id.sms_list_row_button);
 
 				switchButton.setOnClickListener(new View.OnClickListener() {
 
@@ -57,11 +56,11 @@ public class ProfileListAdapter extends ArrayAdapter<Profile> {
 					public void onClick(View v) {
 						// enable or disable profile
 						if (switchButton.isChecked() == true) {
-							Toast.makeText(context, "enabled sms " + profile.getName(), Toast.LENGTH_LONG).show();
-							profile.setEnable(true);
+							Toast.makeText(context, "enabled profile " + smsInstance.getName(), Toast.LENGTH_LONG).show();
+							smsInstance.setEnabled(true);
 						} else if (switchButton.isChecked() == false) {
-							Toast.makeText(context, "disabled profile " + profile.getName(), Toast.LENGTH_LONG).show();
-							profile.setEnable(false);
+							Toast.makeText(context, "disabled profile " + smsInstance.getName(), Toast.LENGTH_LONG).show();
+							smsInstance.setEnabled(false);
 						}
 
 					}

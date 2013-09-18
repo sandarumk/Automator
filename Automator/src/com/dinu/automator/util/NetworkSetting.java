@@ -1,21 +1,41 @@
 package com.dinu.automator.util;
 
+import android.bluetooth.BluetoothAdapter;
+import android.content.Context;
+import android.net.wifi.WifiManager;
+
 public class NetworkSetting {
-	
-	public static void OnWifi(){
-		
+
+	//activate wifi
+	public static void OnWifi(Context context) {
+		WifiManager wifi;
+		wifi = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
+		wifi.setWifiEnabled(true);
 	}
-	
-	public static void offWifi(){
-		
+
+	// deactivate wifi
+	public static void offWifi(Context context) {
+		WifiManager wifi;
+		wifi = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
+		wifi.setWifiEnabled(false);
 	}
-	
-	public static void OnBlueTooth(){
-		
+
+	// activate bluetooth
+	public static void OnBlueTooth(Context context) {
+		BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+		if (bluetoothAdapter.isEnabled()) {
+			bluetoothAdapter.disable();
+		}
+
 	}
-	
-	public static void offBlueTooth(){
-		
+
+	// deactivate bluetooth
+	public static void offBlueTooth() {
+		BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+		if (bluetoothAdapter.isEnabled()) {
+			bluetoothAdapter.disable();
+		}
+
 	}
 
 }

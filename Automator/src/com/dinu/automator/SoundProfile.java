@@ -1,29 +1,24 @@
 package com.dinu.automator;
 
-
 import java.io.Serializable;
 
+public class SoundProfile implements Serializable {
 
-public class SoundProfile implements Serializable{
-	
 	private static final long serialVersionUID = 1L;
 	private int ringVolume;
 	private boolean silentMode;
 	private boolean vibration;
-	//private boolean notification_vibration;
 
 	
-	public SoundProfile(int ring_volume, boolean silent_mode, boolean vibration){
-		this.ringVolume=ring_volume;
-		this.silentMode=silent_mode;
-		this.vibration=vibration;
-	//	this.notification_vibration=notification_vibration;
-		
-	}
-	
-	public void activate(){
-	
+	public SoundProfile(int ring_volume, boolean silent_mode, boolean vibration) {
+		this.ringVolume = ring_volume;
+		this.silentMode = silent_mode;
+		this.vibration = vibration;
 		}
+
+	public void activate() {
+
+	}
 
 	public int getRingVolume() {
 		return ringVolume;
@@ -48,10 +43,4 @@ public class SoundProfile implements Serializable{
 	public void setVibration(boolean vibration) {
 		this.vibration = vibration;
 	}
-	}
-	
-	
-	
-	
-	
-
+}

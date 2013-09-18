@@ -54,7 +54,6 @@ public class ProfileSettingsActivity extends SherlockFragmentActivity {
 		NetworkSettingFragment.getInstance().setNetwork(profile.getNetwork());
 		SetBatteryLevelFragment.getInstance().setBattryLevel(profile.getBatteryLevel());
 		LocationFragment.getInstance().setLocation(profile.getLocations(this));
-		
 
 		FragmentPagerAdapter adapter = new TabbedPaneAdapter(getSupportFragmentManager());
 
@@ -80,7 +79,7 @@ public class ProfileSettingsActivity extends SherlockFragmentActivity {
 
 	@Override
 	public void onBackPressed() {
-	
+
 		super.onBackPressed();
 	}
 
@@ -91,11 +90,11 @@ public class ProfileSettingsActivity extends SherlockFragmentActivity {
 			finish();
 			return true;
 		case R.id.action_save:
-			//save the current selected profile
-		SoundSettingsFramgement.getInstance().updateData(); 
-		DisplaySettingsFragment.getInstance().updateData();
-		LocationFragment.getInstance().updateData();
-			
+			// save the current selected profile
+			SoundSettingsFramgement.getInstance().updateData();
+			DisplaySettingsFragment.getInstance().updateData();
+			LocationFragment.getInstance().updateData();
+			NetworkSettingFragment.getInstance().updateData();
 
 			if (index < 0) {
 				DataStore.addProfile(profile);
@@ -109,7 +108,7 @@ public class ProfileSettingsActivity extends SherlockFragmentActivity {
 			}
 
 			return true;
-			
+
 		case R.id.action_delete:
 			// delete the current selected profile
 			showDeleteDialog(this);
@@ -123,14 +122,14 @@ public class ProfileSettingsActivity extends SherlockFragmentActivity {
 		LayoutInflater inflator = this.getLayoutInflater();
 		View view = inflator.inflate(R.layout.save_dialog_fragment, null);
 
-		final EditText text = (EditText) view.findViewById(R.id.profile_name_save);
+		final EditText text = (EditText) view.findViewById(R.id.save_dialog_save);
 		text.setHint("Profile Name");
 		builder.setView(view);
 		builder.setPositiveButton(R.string.dialog_button_save, new DialogInterface.OnClickListener() {
 
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
-			
+				// save the profile
 				profile.setName(text.getText().toString());
 				DataStore.saveProfiles(context);
 				finish();
@@ -141,29 +140,29 @@ public class ProfileSettingsActivity extends SherlockFragmentActivity {
 		builder.create().show();
 
 	}
-	
-	private void showDeleteDialog(final Context context){
-		AlertDialog.Builder builder= new AlertDialog.Builder(this);
-		builder.setMessage(R.string.dialog_message_confirm_delete).setPositiveButton(R.string.dialog_button_delete, new DialogInterface.OnClickListener() {
-		
-			@Override
-			public void onClick(DialogInterface dialog, int id) {
-				if(index>=0){
-					DataStore.deleteProfile(profile);
-					DataStore.saveProfiles(context);
-				}
-				finish();
-				
-			}
-		}).setNegativeButton(R.string.dialog_button_cancel, new DialogInterface.OnClickListener() {
-			
-			@Override
-			public void onClick(DialogInterface dialog, int id) {
-			
-				
-			}
-		});
-		builder.create().show();	
+
+	private void showDeleteDialog(final Context context) {
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		builder.setMessage(R.string.dialog_message_confirm_delete)
+				.setPositiveButton(R.string.dialog_button_delete, new DialogInterface.OnClickListener() {
+
+					@Override
+					public void onClick(DialogInterface dialog, int id) {
+						if (index >= 0) {
+							DataStore.deleteProfile(profile);
+							DataStore.saveProfiles(context);
+						}
+						finish();
+
+					}
+				}).setNegativeButton(R.string.dialog_button_cancel, new DialogInterface.OnClickListener() {
+
+					@Override
+					public void onClick(DialogInterface dialog, int id) {
+
+					}
+				});
+		builder.create().show();
 	}
 
 	class TabbedPaneAdapter extends FragmentPagerAdapter {

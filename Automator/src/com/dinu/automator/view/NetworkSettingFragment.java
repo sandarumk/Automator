@@ -8,12 +8,14 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ToggleButton;
 
 public class NetworkSettingFragment extends Fragment {
-	
+
 	private NetworkProfile network;
 	private static NetworkSettingFragment networkFragment;
-	
+	private View view;
+
 	public NetworkProfile getNetwork() {
 		return network;
 	}
@@ -21,28 +23,40 @@ public class NetworkSettingFragment extends Fragment {
 	public void setNetwork(NetworkProfile network) {
 		this.network = network;
 	}
-	
+
 	public static NetworkSettingFragment getInstance() {
 		if (networkFragment == null) {
-			networkFragment=new NetworkSettingFragment();
+			networkFragment = new NetworkSettingFragment();
 		}
 		return networkFragment;
 	}
 
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-	
-public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		
-		View view = inflater.inflate(R.layout.network_settings_fragment, null);
+		view = inflater.inflate(R.layout.network_settings_fragment, null);
+		if(network!=null){
+			ToggleButton switchWifi= (ToggleButton) view.findViewById(R.id.toggle_button_wifi);
+			switchWifi.setChecked(network.isWifi());
+			ToggleButton switchBluetooth= (ToggleButton) view.findViewById(R.id.toggle_button_bluetooth);
+			switchBluetooth.setChecked(network.isBluetooth());
+			
+		}
 		return view;
-		
+
 	}
 
-public void updateData() {
-	// TODO Auto-generated method stub
-	
-};
+	public void updateData() {
+		if(view!=null && network!=null ){
+			ToggleButton switchWifi= (ToggleButton) view.findViewById(R.id.toggle_button_wifi);
+			boolean wifi=switchWifi.isChecked();
+			network.setWifi(wifi);
+			
+			ToggleButton switchBluetooth= (ToggleButton) view.findViewById(R.id.toggle_button_bluetooth);
+			boolean bluetooth= switchBluetooth.isChecked();
+			network.setBluetooth(bluetooth);
+			
+		}
+
+	};
 
 }
-
-

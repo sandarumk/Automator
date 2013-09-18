@@ -47,32 +47,29 @@ public class DisplaySettingsFragment extends Fragment implements SleepDialogList
 
 			CheckBox chkAutoRotation = (CheckBox) view.findViewById(R.id.checkBox_autorotation);
 			chkAutoRotation.setChecked(display.isAutoRotation());
-		
 
 			CheckBox chkpulseNot = (CheckBox) view.findViewById(R.id.check_pulse_notification);
 			chkpulseNot.setChecked(display.isPulse_notification_light());
 
-			sleepTime=display.getSleep();
+			sleepTime = display.getSleep();
 			TextView textvwTime = (TextView) view.findViewById(R.id.textView_sleep_time);
-			int arrayPosition=0;
-			if(sleepTime==15){
-				arrayPosition=0;
-			}else if(sleepTime==30){
-				arrayPosition=1;
-			}else if (sleepTime==60) {
-				arrayPosition=2;
-			}else if (sleepTime==120) {
-				arrayPosition=3;
-			}else if (sleepTime==300) {
-				arrayPosition=4;
-			}else if (sleepTime==600) {
-				arrayPosition=5;
+			int arrayPosition = 0;
+			if (sleepTime == 15) {
+				arrayPosition = 0;
+			} else if (sleepTime == 30) {
+				arrayPosition = 1;
+			} else if (sleepTime == 60) {
+				arrayPosition = 2;
+			} else if (sleepTime == 120) {
+				arrayPosition = 3;
+			} else if (sleepTime == 300) {
+				arrayPosition = 4;
+			} else if (sleepTime == 600) {
+				arrayPosition = 5;
 			}
-			if(arrayPosition<6 && arrayPosition>0){
+			if (arrayPosition < 6 && arrayPosition > 0) {
 				textvwTime.setText(getResources().getStringArray(R.array.sleep)[arrayPosition]);
 			}
-			
-			
 
 		}
 
@@ -88,7 +85,7 @@ public class DisplaySettingsFragment extends Fragment implements SleepDialogList
 
 			}
 		});
-		
+
 		return view;
 
 	}
@@ -100,20 +97,20 @@ public class DisplaySettingsFragment extends Fragment implements SleepDialogList
 				String[] items = getResources().getStringArray(R.array.sleep);
 				TextView textvwTime = (TextView) view.findViewById(R.id.textView_sleep_time);
 				textvwTime.setText(items[which]);
-				if(which==0){
-					sleepTime=15;
-				}else if(which==1){
-					sleepTime=30;
-				}else if(which==2){
-					sleepTime=60;
-				}else if(which==3){
-					sleepTime=120;
-				}else if(which==4){
-					sleepTime=300;
-				}else if(which==5){
-					sleepTime=600;
-				}else{
-					sleepTime=0;
+				if (which == 0) {
+					sleepTime = 15;
+				} else if (which == 1) {
+					sleepTime = 30;
+				} else if (which == 2) {
+					sleepTime = 60;
+				} else if (which == 3) {
+					sleepTime = 120;
+				} else if (which == 4) {
+					sleepTime = 300;
+				} else if (which == 5) {
+					sleepTime = 600;
+				} else {
+					sleepTime = 0;
 				}
 
 			}
@@ -121,8 +118,6 @@ public class DisplaySettingsFragment extends Fragment implements SleepDialogList
 
 		builder.create().show();
 	}
-
-	
 
 	public void updateData() {
 
@@ -135,20 +130,21 @@ public class DisplaySettingsFragment extends Fragment implements SleepDialogList
 
 			CheckBox chkpulseNot = (CheckBox) view.findViewById(R.id.check_pulse_notification);
 			display.setPulse_notification_light(chkpulseNot.isChecked());
-			
+
 			display.setSleep(sleepTime);
 
 		}
 
 	}
-	public void sleepTimeChecker(){
-		
+
+	public void sleepTimeChecker() {
+
 	}
 
 	@Override
 	public void onDialogClick(DialogFragment dialog, int which) {
 		// TODO Auto-generated method stub
-		
+
 	};
 
 }

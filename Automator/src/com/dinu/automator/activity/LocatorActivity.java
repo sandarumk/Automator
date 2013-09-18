@@ -17,36 +17,27 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.littlefluffytoys.littlefluffylocationlibrary.LocationInfo;
 
-
 public class LocatorActivity extends Activity {
-	
+
 	int radius;
 	GoogleMap map;
 	LatLng position;
-	Double lattitude =21.0;
+	Double lattitude = 21.0;
 	Double longitude = 7.0;
-	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_locator);
-		
-	
-		
-		map=((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
-		map.getUiSettings().setMyLocationButtonEnabled(true);;
-		//map.setMyLocationEnabled(true);
-		
-		
+
+		map = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
+		map.getUiSettings().setMyLocationButtonEnabled(true);
+		;
+
 		LocationInfo latestInfo = new LocationInfo(getBaseContext());
-		lattitude = (double)latestInfo.lastLat;
+		lattitude = (double) latestInfo.lastLat;
 		longitude = (double) latestInfo.lastLong;
-		
-//		if(map.getMyLocation()!=null){
-//	lattitude= map.getMyLocation().getLatitude();
-//	longitude = map.getMyLocation().getLongitude();
-//		}
+
 		final Marker marker1 = map.addMarker(new MarkerOptions().position(new LatLng(lattitude, longitude)));
 		CircleOptions circleOptions = new CircleOptions().center(marker1.getPosition()).radius(1000);
 		final Circle circle = map.addCircle(circleOptions);
@@ -57,14 +48,12 @@ public class LocatorActivity extends Activity {
 
 			@Override
 			public void onMarkerDragStart(Marker marker) {
-				// TODO Auto-generated method stub
 				circle.remove();
 
 			}
 
-		@Override
-		public void onMarkerDragEnd(Marker marker) {
-				// TODO Auto-generated method stub
+			@Override
+			public void onMarkerDragEnd(Marker marker) {
 				CircleOptions circleOptions = new CircleOptions().center(marker.getPosition()).radius(1000);
 				Circle circle = map.addCircle(circleOptions);
 				position = marker.getPosition();
@@ -72,13 +61,11 @@ public class LocatorActivity extends Activity {
 				longitude = position.longitude;
 				DialogFragment dialog = new SetLocationDialogFragment(lattitude.toString(), longitude.toString());
 				dialog.show(getFragmentManager(), "location");
-				
 
 			}
 
 			@Override
 			public void onMarkerDrag(Marker marker) {
-				// TODO Auto-generated method stub
 				// Toast toast=Toast.makeText(getApplicationContext(),
 				// marker1.getPosition().toString(), Toast.LENGTH_SHORT);
 				// toast.show();
@@ -90,24 +77,19 @@ public class LocatorActivity extends Activity {
 
 			@Override
 			public void onMapLongClick(LatLng point) {
-			
+
 				marker1.setPosition(point);
 				CircleOptions circleOptions = new CircleOptions().center(marker1.getPosition()).radius(1000);
 				Circle circle = map.addCircle(circleOptions);
-			position = marker1.getPosition();
-			lattitude = position.latitude;
+				position = marker1.getPosition();
+				lattitude = position.latitude;
 				longitude = position.longitude;
 				DialogFragment dialog = new SetLocationDialogFragment(lattitude.toString(), longitude.toString());
 				dialog.show(getFragmentManager(), "location");
 
 			}
 		});
-		
-		
-		
 
-	
 	}
-
 
 }

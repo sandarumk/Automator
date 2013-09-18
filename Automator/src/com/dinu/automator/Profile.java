@@ -7,10 +7,6 @@ import android.content.Context;
 
 import com.littlefluffytoys.littlefluffylocationlibrary.LocationInfo;
 
-
-
-
-
 public class Profile implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
@@ -29,6 +25,7 @@ public class Profile implements Serializable{
 		sounds=new SoundProfile(0,false,false);
 		display= new DisplayProfile(0, false, 30, false);
 		location=new Location(Constant.INITIAL_LONGITUDE,Constant.INITIAL_LATTITUDE);
+		network= new NetworkProfile(false, false);
 		
 //		LocationInfo latestInfo = new LocationInfo(context);
 //		latestInfo.refresh(context);
@@ -96,6 +93,9 @@ public class Profile implements Serializable{
 	}
 
 	public NetworkProfile getNetwork() {
+		if(network==null){
+			network=new NetworkProfile(false, false);
+		}
 		return network;
 	}
 

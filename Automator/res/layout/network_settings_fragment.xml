@@ -8,5 +8,69 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin">
     
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+    
+    <TextView
+        android:id="@+id/textView_wifi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:text="@string/network_fragment_wifi" 
+        android:layout_gravity="center"/>
+    
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right" >
+
+    
+    <ToggleButton
+        android:id="@+id/toggle_button_wifi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" 
+        android:background="@drawable/selector_switch"
+        android:focusable="false"
+        android:textOn=""
+        android:textOff=""/>
+    </LinearLayout>
+    </LinearLayout>
+    
+     <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+    
+    <TextView
+        android:id="@+id/textView_bluetooth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:text="@string/network_fragment_bluetooth" 
+        android:layout_gravity="center"/>
+    
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right" >
+
+    
+    <ToggleButton
+        android:id="@+id/toggle_button_bluetooth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_switch"
+        android:focusable="false"
+        android:textOn=""
+        android:textOff="" />
+    </LinearLayout>
+    </LinearLayout>
+    
 
 </LinearLayout>

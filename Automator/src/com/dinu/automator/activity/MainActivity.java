@@ -1,5 +1,10 @@
 package com.dinu.automator.activity;
 
+/*
+ * @author Dinu
+ * Main Activity to choose the expected functionality
+ */
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -42,54 +47,54 @@ public class MainActivity extends SherlockActivity {
 				DataStore.setProfileEnabled(enableProfile.isChecked());
 			}
 		});
-		
+
 		// handle alarm
-				TextView alarmView = (TextView) findViewById(R.id.main_menu_alarm_text);
-				final ToggleButton enableAlarm= (ToggleButton) findViewById(R.id.enable_alarm_switch);
+		TextView alarmView = (TextView) findViewById(R.id.main_menu_alarm_text);
+		final ToggleButton enableAlarm = (ToggleButton) findViewById(R.id.enable_alarm_switch);
 
-				// handle click on the alarm text view
-				alarmView.setOnClickListener(new View.OnClickListener() {
+		// handle click on the alarm text view
+		alarmView.setOnClickListener(new View.OnClickListener() {
 
-					@Override
-					public void onClick(View v) {
-						// go to alarm list
-						startActivity(new Intent(MainActivity.this, AlarmActivity.class));
-					}
-				});
+			@Override
+			public void onClick(View v) {
+				// go to alarm list
+				startActivity(new Intent(MainActivity.this, AlarmActivity.class));
+			}
+		});
 
-				// handle click on the enable button
-				enableAlarm.setOnClickListener(new View.OnClickListener() {
+		// handle click on the enable button
+		enableAlarm.setOnClickListener(new View.OnClickListener() {
 
-					@Override
-					public void onClick(View v) {
-						// enable location based alarm service
-						DataStore.setAlarmEnabled(enableAlarm.isChecked());
-					}
-				});
-				
-				// handle sms 
-				TextView smsView = (TextView) findViewById(R.id.main_menu_sms_text);
-				final ToggleButton enableSms = (ToggleButton) findViewById(R.id.enable_sms_switch);
+			@Override
+			public void onClick(View v) {
+				// enable location based alarm service
+				DataStore.setAlarmEnabled(enableAlarm.isChecked());
+			}
+		});
 
-				// handle click on the sms text view
-				smsView.setOnClickListener(new View.OnClickListener() {
+		// handle sms
+		TextView smsView = (TextView) findViewById(R.id.main_menu_sms_text);
+		final ToggleButton enableSms = (ToggleButton) findViewById(R.id.enable_sms_switch);
 
-					@Override
-					public void onClick(View v) {
-						// go to sms list
-						startActivity(new Intent(MainActivity.this, SmsActivity.class));
-					}
-				});
+		// handle click on the sms text view
+		smsView.setOnClickListener(new View.OnClickListener() {
 
-				// handle click on the enable button
-				enableSms.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				// go to sms list
+				startActivity(new Intent(MainActivity.this, SmsActivity.class));
+			}
+		});
 
-					@Override
-					public void onClick(View v) {
-						// enable location based alarm service
-						DataStore.setSmsEnabled(enableSms.isChecked());
-					}
-				});
+		// handle click on the enable button
+		enableSms.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// enable location based alarm service
+				DataStore.setSmsEnabled(enableSms.isChecked());
+			}
+		});
 
 	}
 

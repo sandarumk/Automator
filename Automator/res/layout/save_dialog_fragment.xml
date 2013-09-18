@@ -5,7 +5,7 @@
     android:orientation="vertical" >
     
     <EditText
-        android:id="@+id/profile_name_save"
+        android:id="@+id/save_dialog_save"
         android:inputType="text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -14,12 +14,15 @@ import android.content.Context;
 
 public class DataStore {
 
+	//file names
 	private static final String FILENAME_PROFILE = "profile_data";
-	private static final String FILENAME_ALARM= "alarm_data";
+	private static final String FILENAME_ALARM = "alarm_data";
 	private static final String FILENAME_SMS = "sms_data";
+	// lists of objects
 	private static List<Profile> profiles;
 	private static List<Alarm> alarms;
 	private static List<Sms> sms;
+	// state of functionalities
 	private static boolean profileEnabled;
 	private static boolean alarmEnabled;
 	private static boolean smsEnabled;
@@ -65,10 +68,8 @@ public class DataStore {
 			oos.flush();
 			oos.close();
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -79,7 +80,7 @@ public class DataStore {
 	}
 
 	public static void saveSmS(Context context) {
-		saveObject(context, FILENAME_SMS,sms);
+		saveObject(context, FILENAME_SMS, sms);
 	}
 
 	public static void saveAlarms(Context context) {
@@ -92,10 +93,10 @@ public class DataStore {
 		retreiveProfiles(context);
 	}
 
-	public static void retreiveProfiles(Context context){
+	public static void retreiveProfiles(Context context) {
 		FileInputStream fis;
-		
-		String filename=FILENAME_PROFILE;
+
+		String filename = FILENAME_PROFILE;
 		try {
 			fis = context.openFileInput(filename);
 			ObjectInputStream ois = new ObjectInputStream(fis);
@@ -103,31 +104,25 @@ public class DataStore {
 			ois.close();
 			fis.close();
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			
 			e.printStackTrace();
 		} catch (StreamCorruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-			
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}finally{
-			if (profiles==null){
-			profiles= new ArrayList<Profile>();
+		} finally {
+			if (profiles == null) {
+				profiles = new ArrayList<Profile>();
 			}
 		}
-		
 
 	}
-	public static void retreiveSms(Context context){
+
+	public static void retreiveSms(Context context) {
 		FileInputStream fis;
-		
-		String filename=FILENAME_SMS;
+
+		String filename = FILENAME_SMS;
 		try {
 			fis = context.openFileInput(filename);
 			ObjectInputStream ois = new ObjectInputStream(fis);
@@ -135,73 +130,85 @@ public class DataStore {
 			ois.close();
 			fis.close();
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (StreamCorruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} finally{
-			if(sms==null){
-			sms= new ArrayList<Sms>();
+		} finally {
+			if (sms == null) {
+				sms = new ArrayList<Sms>();
 			}
 		}
-		
 
 	}
-	public static void retreiveAlarm(Context context){
+
+	public static void retreiveAlarm(Context context) {
 		FileInputStream fis;
-		
-		String filename=FILENAME_ALARM;
+
+		String filename = FILENAME_ALARM;
 		try {
 			fis = context.openFileInput(filename);
 			ObjectInputStream ois = new ObjectInputStream(fis);
-			alarms= (ArrayList<Alarm>) ois.readObject();
+			alarms = (ArrayList<Alarm>) ois.readObject();
 			ois.close();
 			fis.close();
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		} catch (StreamCorruptedException e) {
-			// TODO Auto-generated catch block
+		
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally{
-			if(alarms==null){
-				alarms= new ArrayList<Alarm>();
-			}
 			
+			e.printStackTrace();
+		} finally {
+			if (alarms == null) {
+				alarms = new ArrayList<Alarm>();
+			}
+
 		}
-		
 
 	}
-	public static List<Profile> getProfileList(){
-		if(profiles == null){
+
+	public static List<Profile> getProfileList() {
+		if (profiles == null) {
 			profiles = new ArrayList<Profile>();
 		}
-		
+
 		return profiles;
 	}
-	
-	public static void addProfile(Profile profile){
+
+	public static void addProfile(Profile profile) {
 		profiles.add(profile);
-		
+
 	}
-	
-	public static void deleteProfile(Profile profile){
+
+	public static void deleteProfile(Profile profile) {
 		profiles.remove(profile);
 	}
 	
+	public static List<Sms> getsmsList() {
+		if (sms == null) {
+			sms = new ArrayList<Sms>();
+		}
 
+		return sms;
+	}
+
+	public static void addSms(Sms smsInstance) {
+		sms.add(smsInstance);
+		
+
+	}
+
+	public static void deleteSms(Sms smsInstance) {
+		sms.remove(smsInstance);
+	}
 
 }

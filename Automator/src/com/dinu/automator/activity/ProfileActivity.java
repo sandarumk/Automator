@@ -1,6 +1,12 @@
 package com.dinu.automator.activity;
 
+/*
+ * @author Dinu
+ * Profile Activity
+ */
+
 import java.util.ArrayList;
+
 import java.util.List;
 
 import android.content.Intent;
@@ -47,7 +53,6 @@ public class ProfileActivity extends SherlockActivity {
 
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
-				//Profile profile = profileList.get(position);
 				Intent intent = new Intent(ProfileActivity.this, ProfileSettingsActivity.class);
 				intent.putExtra(Constant.INTENT_EXTRA_PROFILE_INDEX, position);
 				startActivity(intent);
