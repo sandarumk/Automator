@@ -1,7 +1,16 @@
-package com.dinu.automator;
+package com.dinu.automator.activity;
 
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.MenuItem;
+import com.dinu.automator.Constant;
+import com.dinu.automator.DataStore;
+import com.dinu.automator.Profile;
+import com.dinu.automator.R;
+import com.dinu.automator.Sms;
+import com.dinu.automator.R.id;
+import com.dinu.automator.R.layout;
+import com.dinu.automator.R.menu;
+import com.dinu.automator.R.string;
 import com.dinu.automator.view.DisplaySettingsFragment;
 import com.dinu.automator.view.LocationFragment;
 import com.dinu.automator.view.SoundSettingsFramgement;
@@ -11,12 +20,15 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.EditText;
 
-public class SmsSettings extends SherlockActivity {
+public class SmsSettingsActivity extends SherlockActivity {
 	
 	private Sms smsInstance;
 	private int index;
@@ -32,14 +44,37 @@ public class SmsSettings extends SherlockActivity {
 			getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		}
 		
+		index = getIntent().getIntExtra(Constant.INTENT_EXTRA_SMS_INDEX, 5);
+		
+
+		if (index < 0) {
+			smsInstance = new Sms();
+		} else {
+		smsInstance = DataStore.getsmsList().get(index);
+		}
+		
+		Button setLocation = (Button)findViewById(R.id.button_sms_set_location);
+		setLocation.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				startActivity(new Intent(SmsSettingsActivity.this,LocatorActivity.class));
+				
+			}
+		});
+
+		
 	}
 
+
+	
 	@Override
-	public boolean onCreateOptionsMenu(com.actionbarsherlock.view.Menu menu) {
+	public boolean onCreateOptionsMenu(com.actionbarsherlock.view.Menu menu){
 		getSupportMenuInflater().inflate(R.menu.sms_settings, menu);
 		getSupportActionBar().setTitle(smsInstance.getName());
 		return true;
 	}
+	
 
 	@Override
 	public void onBackPressed() {

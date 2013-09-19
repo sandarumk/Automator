@@ -2,6 +2,8 @@ package com.dinu.automator;
 
 import java.io.Serializable;
 
+import android.content.Context;
+
 public class Sms implements Serializable{
 
 	/**

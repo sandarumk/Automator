@@ -54,6 +54,10 @@
     <string name="network_fragment_bluetooth">Bluetooth</string>
     <string name="profile_activity_title">Profiles</string>
     <string name="sms_activity_title">SMS</string>
+    <string name="sms_set_location_button">Set Location</string>
+    <string name="sms_enter_phone_number">Enter Phone Number</string>
+    <string name="sms_image_button_content_description">Image button for invoking the contact picker</string>
+    <string name="sms_message_text_view">Enter Message</string>
 
     <string-array name="sleep">
         <item>15 sec</item>

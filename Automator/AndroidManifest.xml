@@ -88,7 +88,7 @@
             android:label="@string/title_activity_location" >
         </activity>
         <activity
-            android:name="com.dinu.automator.SmsSettings"
+            android:name="com.dinu.automator.activity.SmsSettingsActivity"
             android:label="@string/title_activity_sms_settings" >
         </activity>
     </application>

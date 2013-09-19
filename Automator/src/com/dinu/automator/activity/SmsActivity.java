@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 
 import com.actionbarsherlock.app.SherlockActivity;
@@ -18,7 +19,6 @@ import com.dinu.automator.DataStore;
 import com.dinu.automator.Profile;
 import com.dinu.automator.R;
 import com.dinu.automator.Sms;
-import com.dinu.automator.SmsSettings;
 import com.dinu.automator.adapter.ProfileListAdapter;
 import com.dinu.automator.adapter.SmsListAdapter;
 
@@ -31,6 +31,8 @@ public class SmsActivity extends SherlockActivity {
 		
 		getSupportActionBar().show();
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+		
+		
 
 	}
 	
@@ -52,8 +54,8 @@ public class SmsActivity extends SherlockActivity {
 
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
-				Intent intent = new Intent(SmsActivity.this, SmsSettings.class);
-				intent.putExtra(Constant.INTENT_EXTRA_PROFILE_INDEX, position);
+				Intent intent = new Intent(SmsActivity.this, SmsSettingsActivity.class);
+				intent.putExtra(Constant.INTENT_EXTRA_SMS_INDEX, position);
 				startActivity(intent);
 			}
 
@@ -72,9 +74,9 @@ public class SmsActivity extends SherlockActivity {
 		case android.R.id.home:
 			finish();
 			return true;
-		case R.id.action_new_profile:
-			Intent intent = new Intent(SmsActivity.this, SmsSettings.class);
-			intent.putExtra(Constant.INTENT_EXTRA_PROFILE_INDEX, -1);
+		case R.id.action_new_sms:
+			Intent intent = new Intent(SmsActivity.this, SmsSettingsActivity.class);
+			intent.putExtra(Constant.INTENT_EXTRA_SMS_INDEX, -1);
 			startActivity(intent);
 			return true;
 
