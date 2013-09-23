@@ -15,23 +15,34 @@ import com.dinu.automator.view.DisplaySettingsFragment;
 import com.dinu.automator.view.LocationFragment;
 import com.dinu.automator.view.SoundSettingsFramgement;
 
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.ContactsContract.CommonDataKinds.Phone;
+import android.provider.ContactsContract.Contacts;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
+import android.support.v4.app.ShareCompat.IntentBuilder;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 
 public class SmsSettingsActivity extends SherlockActivity {
 	
 	private Sms smsInstance;
 	private int index;
+	private static final int CONTACT_PICKER_RESULT = 1001;
+	private EditText num;
+	private EditText message;
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +74,22 @@ public class SmsSettingsActivity extends SherlockActivity {
 			}
 		});
 
+		ImageButton setContact= (ImageButton)findViewById(R.id.imageButton_sms_contact_picker);
+		setContact.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent contactPickerIntent= new Intent(Intent.ACTION_PICK,Contacts.CONTENT_URI);
+				startActivityForResult(contactPickerIntent, CONTACT_PICKER_RESULT);
+			}
+		});
+		
+		num =(EditText)findViewById(R.id.edittext_sms_phone_number);
+		message=(EditText)findViewById(R.id.editText_message);
+		
+		num.setText(smsInstance.getNumber());
+		message.setText(smsInstance.getMessage());
+		
 		
 	}
 
@@ -89,9 +116,10 @@ public class SmsSettingsActivity extends SherlockActivity {
 			finish();
 			return true;
 		case R.id.action_save:
-			
+			updateData();
 
 			if (index < 0) {
+				
 				DataStore.addSms(smsInstance);
 				index = DataStore.getsmsList().size() - 1;
 				showSaveDialog(this);
@@ -125,7 +153,9 @@ public class SmsSettingsActivity extends SherlockActivity {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
 				// save the profile
+				
 				smsInstance.setName(text.getText().toString());
+				
 				DataStore.saveSmS(context);
 				finish();
 
@@ -158,6 +188,34 @@ public class SmsSettingsActivity extends SherlockActivity {
 					}
 				});
 		builder.create().show();
+	}
+	
+	protected void onActivityResult(int requestCode, int resultCode,Intent data) {
+		 if (resultCode == RESULT_OK) {  
+		        switch (requestCode) {  
+		        case CONTACT_PICKER_RESULT:  
+		            // handle contact results  
+		        	Uri result= data.getData();
+		        	String id = result.getLastPathSegment();
+		        	Cursor cursor = getContentResolver().query(Phone.CONTENT_URI, null,  
+		        	        Phone.CONTACT_ID + "=?",  
+		        	        new String[]{id}, null);  
+		        	if (cursor.moveToFirst()) {  
+		        	    int phoneIdx = cursor.getColumnIndex(Phone.DATA);  
+		        	    String number = cursor.getString(phoneIdx);
+		        	    num.setText(number);
+		        	} 
+		            break;  
+		        }  
+		    }  
+	}
+	
+	private void updateData(){
+		if(smsInstance!=null){
+			smsInstance.setNumber(num.getText().toString());
+			smsInstance.setMessage(message.getText().toString());
+			// set the location from the dialog box
+		}
 	}
 
 }
