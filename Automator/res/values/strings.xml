@@ -54,6 +54,7 @@
     <string name="network_fragment_bluetooth">Bluetooth</string>
     <string name="profile_activity_title">Profiles</string>
     <string name="sms_activity_title">SMS</string>
+    <string name="alarm_activity_title">Alarms</string>
     <string name="sms_set_location_button">Set Location</string>
     <string name="sms_enter_phone_number">Enter Phone Number</string>
     <string name="sms_image_button_content_description">Image button for invoking the contact picker</string>
@@ -71,5 +72,7 @@
 
     <string name="title_activity_sms_settings">SmsSettings</string>
     <string name="title_activity_contact_picker">ContactPickerActivity</string>
+    <string name="title_activity_alarm_settings">AlarmSettingsActivity</string>
+    <string name="alarm_edit_text_label">Label</string>
 
 </resources>

@@ -2,6 +2,7 @@ package com.dinu.automator.adapter;
 
 import java.util.List;
 
+import com.dinu.automator.Alarm;
 import com.dinu.automator.R;
 import com.dinu.automator.Sms;
 
@@ -14,23 +15,23 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
-public class SmsListAdapter extends ArrayAdapter<Sms>{
+public class AlarmListAdapter extends ArrayAdapter<Alarm> {
 
-	private List<Sms> sms;
+	private List<Alarm> alarms;
 	private Context context;
 	private int resource;
 	private int textViewResourceId;
-
-	public SmsListAdapter(Context context, int resource, int textViewResourceId, List<Sms> objects) {
+	
+	public AlarmListAdapter(Context context, int resource, int textViewResourceId, List<Alarm> objects) {
 
 		super(context, resource, textViewResourceId, objects);
-		this.sms = objects;
+		this.alarms = objects;
 		this.context = context;
 		this.resource = resource;
 		this.textViewResourceId = textViewResourceId;
 
 	}
-
+	
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 
@@ -43,24 +44,24 @@ public class SmsListAdapter extends ArrayAdapter<Sms>{
 
 		TextView text = (TextView) view.findViewById(textViewResourceId);
 
-		if (sms.size() > position) {
-			final Sms smsInstance = sms.get(position);
+		if (alarms.size() > position) {
+			final Alarm alarmInstance = alarms.get(position);
 
-			if (smsInstance != null && smsInstance.getName() != null) {
-				text.setText(smsInstance.getName());
-				final ToggleButton switchButton = (ToggleButton) view.findViewById(R.id.sms_list_row_button);
+			if (alarmInstance != null && alarmInstance.getName() != null) {
+				text.setText(alarmInstance.getName());
+				final ToggleButton switchButton = (ToggleButton) view.findViewById(R.id.alarm_list_row_button);
 
 				switchButton.setOnClickListener(new View.OnClickListener() {
 
 					@Override
 					public void onClick(View v) {
-						// enable or disable sms
+						// enable or disable alarm
 						if (switchButton.isChecked() == true) {
-							Toast.makeText(context, "enabled sms" + smsInstance.getName(), Toast.LENGTH_LONG).show();
-							smsInstance.setEnabled(true);
+							Toast.makeText(context, "enabled alarm " + alarmInstance.getName(), Toast.LENGTH_LONG).show();
+							alarmInstance.setEnabled(true);
 						} else if (switchButton.isChecked() == false) {
-							Toast.makeText(context, "disabled sms " + smsInstance.getName(), Toast.LENGTH_LONG).show();
-							smsInstance.setEnabled(false);
+							Toast.makeText(context, "disabled alarm " + alarmInstance.getName(), Toast.LENGTH_LONG).show();
+							alarmInstance.setEnabled(false);
 						}
 
 					}
@@ -71,5 +72,6 @@ public class SmsListAdapter extends ArrayAdapter<Sms>{
 		return view;
 
 	}
-
+	
+	
 }

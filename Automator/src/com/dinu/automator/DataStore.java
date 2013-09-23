@@ -210,5 +210,23 @@ public class DataStore {
 	public static void deleteSms(Sms smsInstance) {
 		sms.remove(smsInstance);
 	}
+	
+	public static List<Alarm> getAlarmList() {
+		if (alarms == null) {
+			alarms = new ArrayList<Alarm>();
+		}
+
+		return alarms;
+	}
+
+	public static void addAlarm(Alarm alarmInstance) {
+		alarms.add(alarmInstance);
+		
+
+	}
+
+	public static void deleteAlarm(Alarm alarmInstance) {
+		alarms.remove(alarmInstance);
+	}
 
 }
