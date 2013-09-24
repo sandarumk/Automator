@@ -22,10 +22,10 @@ public class Profile implements Serializable{
 
 	
 	public Profile(Context context){
-		sounds=new SoundProfile(0,false,false);
-		display= new DisplayProfile(0, false, 30, false);
+		sounds=new SoundProfile(0,false,false,false,false,false);
+		display= new DisplayProfile(0, false,false, false,30, false,false,false);
 		location=new Location(Constant.INITIAL_LONGITUDE,Constant.INITIAL_LATTITUDE);
-		network= new NetworkProfile(false, false);
+		network= new NetworkProfile(false, false,false, false);
 		
 //		LocationInfo latestInfo = new LocationInfo(context);
 //		latestInfo.refresh(context);
@@ -72,7 +72,7 @@ public class Profile implements Serializable{
 
 	public SoundProfile getSounds() {
 		if(sounds==null){
-			sounds=new SoundProfile(0,false,false);
+			sounds=new SoundProfile(0,false,false,false, false, false);
 		}
 		return sounds;
 	}
@@ -83,7 +83,7 @@ public class Profile implements Serializable{
 
 	public DisplayProfile getDisplay() {
 		if(display==null){
-			display=new DisplayProfile(0, false, 30, false);
+			display=new DisplayProfile(0,false,false,false, 30,false,false, false);
 		}
 		return display;
 	}
@@ -94,7 +94,7 @@ public class Profile implements Serializable{
 
 	public NetworkProfile getNetwork() {
 		if(network==null){
-			network=new NetworkProfile(false, false);
+			network=new NetworkProfile(false, false,false,false);
 		}
 		return network;
 	}

@@ -2,80 +2,97 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" 
+    android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin">
-    
+    android:paddingTop="@dimen/activity_vertical_margin" >
+
     <TableRow
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
 
-    <TextView
-        android:id="@+id/textView_volume"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/sound_fragment_volume"/>
-
-    <SeekBar
-        android:id="@+id/seekBar_volume"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    
-    </TableRow>
-    
-   
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content" >
-
-    <TextView
-        android:id="@+id/textView_vibration"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/sound_fragment_vibration"/>
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:gravity="right" >
-
-    <CheckBox
-        android:id="@+id/checkBox_vibration"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        />
-    </LinearLayout>
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content" >
-    
-
+        <CheckBox
+            android:id="@+id/checkBox_volume_enable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
         <TextView
-        android:id="@+id/textView_silent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/sound_fragment_silent"/>
-        
-        <LinearLayout
-        android:orientation="horizontal"
+            android:id="@+id/textView_volume"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sound_fragment_volume" />
+
+        <SeekBar
+            android:id="@+id/seekBar_volume"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </TableRow>
+
+    <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:gravity="right" >
+        android:orientation="horizontal" >
 
-    <CheckBox
-        android:id="@+id/check_silent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-  
+        <CheckBox
+            android:id="@+id/checkBox_vibration_enabled"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
-</LinearLayout>
-</LinearLayout>
+        <TextView
+            android:id="@+id/textView_vibration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sound_fragment_vibration" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:orientation="horizontal" >
+
+            <ToggleButton
+                android:id="@+id/switch_vibration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/selector_switch"
+                android:focusable="false"
+                android:textOff=""
+                android:textOn="" />
+        </LinearLayout>
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <CheckBox
+            android:id="@+id/checkBox_silent_enable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/textView_silent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sound_fragment_silent" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:orientation="horizontal" >
+
+            <ToggleButton
+                android:id="@+id/switch_silent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/selector_switch"
+                android:focusable="false"
+                android:textOff=""
+                android:textOn="" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

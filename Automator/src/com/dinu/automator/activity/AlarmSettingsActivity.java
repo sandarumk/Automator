@@ -1,7 +1,15 @@
-package com.dinu.automator;
+package com.dinu.automator.activity;
 
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.MenuItem;
+import com.dinu.automator.Alarm;
+import com.dinu.automator.Constant;
+import com.dinu.automator.DataStore;
+import com.dinu.automator.R;
+import com.dinu.automator.R.id;
+import com.dinu.automator.R.layout;
+import com.dinu.automator.R.menu;
+import com.dinu.automator.R.string;
 
 import android.net.Uri;
 import android.os.Bundle;
@@ -15,10 +23,12 @@ import android.database.Cursor;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.EditText;
 
 public class AlarmSettingsActivity extends SherlockActivity {
-	
+
 	private Alarm alarmInstance;
 	private int index;
 	private EditText label;
@@ -27,38 +37,47 @@ public class AlarmSettingsActivity extends SherlockActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_alarm_settings);
-		
+
 		if (getSupportActionBar() != null) {
 			getSupportActionBar().show();
 			getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		}
-		
+
 		index = getIntent().getIntExtra(Constant.INTENT_EXTRA_ALARM_INDEX, 5);
-		
 
 		if (index < 0) {
 			alarmInstance = new Alarm();
 		} else {
-		alarmInstance = DataStore.getAlarmList().get(index);
+			alarmInstance = DataStore.getAlarmList().get(index);
 		}
-		
-		label=(EditText)findViewById(R.id.editText_alarm_set_label);
+
+		label = (EditText) findViewById(R.id.editText_alarm_set_label);
 		label.setText(alarmInstance.getLabel());
+
+		Button setLoc = (Button) findViewById(R.id.button_alarm_set_location);
+		setLoc.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				startActivity(new Intent(AlarmSettingsActivity.this, LocatorActivity.class));
+
+			}
+		});
 	}
 
 	@Override
-	public boolean onCreateOptionsMenu(com.actionbarsherlock.view.Menu menu){
+	public boolean onCreateOptionsMenu(com.actionbarsherlock.view.Menu menu) {
 		getSupportMenuInflater().inflate(R.menu.alarm_settings, menu);
 		getSupportActionBar().setTitle(alarmInstance.getName());
 		return true;
 	}
-	
+
 	@Override
 	public void onBackPressed() {
 
 		super.onBackPressed();
 	}
-	
+
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
@@ -69,7 +88,7 @@ public class AlarmSettingsActivity extends SherlockActivity {
 			updateData();
 
 			if (index < 0) {
-				
+
 				DataStore.addAlarm(alarmInstance);
 				index = DataStore.getAlarmList().size() - 1;
 				showSaveDialog(this);
@@ -103,9 +122,9 @@ public class AlarmSettingsActivity extends SherlockActivity {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
 				// save the alarm
-				
+
 				alarmInstance.setName(text.getText().toString());
-				
+
 				DataStore.saveAlarms(context);
 				finish();
 
@@ -139,10 +158,9 @@ public class AlarmSettingsActivity extends SherlockActivity {
 				});
 		builder.create().show();
 	}
-	
-	
-	private void updateData(){
-		if(alarmInstance!=null){
+
+	private void updateData() {
+		if (alarmInstance != null) {
 			alarmInstance.setLabel(label.getText().toString());
 			// set the location from the dialog box
 		}

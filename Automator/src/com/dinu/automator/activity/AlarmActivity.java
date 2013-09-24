@@ -14,7 +14,6 @@ import android.widget.ListView;
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.MenuItem;
 import com.dinu.automator.Alarm;
-import com.dinu.automator.AlarmSettingsActivity;
 import com.dinu.automator.Constant;
 import com.dinu.automator.DataStore;
 import com.dinu.automator.Profile;

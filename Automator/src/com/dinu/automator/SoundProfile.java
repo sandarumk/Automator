@@ -5,42 +5,46 @@ import java.io.Serializable;
 public class SoundProfile implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	private int ringVolume;
-	private boolean silentMode;
-	private boolean vibration;
+	private IntSetting ringVolume;
+	private BooleanSetting silentMode;
+	private BooleanSetting vibration;
 
 	
-	public SoundProfile(int ring_volume, boolean silent_mode, boolean vibration) {
-		this.ringVolume = ring_volume;
-		this.silentMode = silent_mode;
-		this.vibration = vibration;
-		}
+	public SoundProfile(int ringVolume, boolean volumeEnable, boolean silentMode,boolean silentEnable, boolean vibration,boolean vibrationEnable ) {
+		this.ringVolume=new IntSetting(ringVolume, volumeEnable);
+		this.silentMode=new BooleanSetting(silentMode, silentEnable);
+		this.vibration=new BooleanSetting(vibration, vibrationEnable);
+
+				}
 
 	public void activate() {
 
 	}
 
-	public int getRingVolume() {
+	public IntSetting getRingVolume() {
 		return ringVolume;
 	}
 
-	public void setRingVolume(int ringVolume) {
-		this.ringVolume = ringVolume;
+	public void setRingVolume(int ringVolume,boolean enable) {
+		this.ringVolume.setSetting(ringVolume);
+		this.ringVolume.setEnable(enable);
 	}
 
-	public boolean isSilentMode() {
+	public BooleanSetting getSilentMode() {
 		return silentMode;
 	}
 
-	public void setSilentMode(boolean silentMode) {
-		this.silentMode = silentMode;
+	public void setSilentMode(boolean silentMode, boolean enable) {
+		this.silentMode.setBooleanSetting(silentMode);
+		this.silentMode.setEnable(enable);
 	}
 
-	public boolean isVibration() {
+	public BooleanSetting getVibration() {
 		return vibration;
 	}
 
-	public void setVibration(boolean vibration) {
-		this.vibration = vibration;
+	public void setVibration(boolean vibration, boolean enable) {
+		this.vibration.setBooleanSetting(vibration);
+		this.vibration.setEnable(enable);
 	}
 }

@@ -98,7 +98,7 @@
             android:label="@string/title_activity_contact_picker" >
         </activity>
         <activity
-            android:name="com.dinu.automator.AlarmSettingsActivity"
+            android:name="com.dinu.automator.activity.AlarmSettingsActivity"
             android:label="@string/title_activity_alarm_settings" >
         </activity>
     </application>

@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.ToggleButton;
 
 public class NetworkSettingFragment extends Fragment {
@@ -34,11 +35,25 @@ public class NetworkSettingFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
 		view = inflater.inflate(R.layout.network_settings_fragment, null);
+		ToggleButton switchWifi= (ToggleButton) view.findViewById(R.id.toggle_button_wifi);
+		switchWifi.setChecked(false);
+		CheckBox chkwifi=(CheckBox)view.findViewById(R.id.checkBox_wifi_enable);
+		chkwifi.setChecked(false);
+		ToggleButton switchBluetooth= (ToggleButton) view.findViewById(R.id.toggle_button_bluetooth);
+		switchBluetooth.setChecked(false);
+		CheckBox chkbluetooth=(CheckBox)view.findViewById(R.id.checkBox_bluetooth_enable);
+		chkbluetooth.setChecked(false);
+		
+		
 		if(network!=null){
-			ToggleButton switchWifi= (ToggleButton) view.findViewById(R.id.toggle_button_wifi);
-			switchWifi.setChecked(network.isWifi());
-			ToggleButton switchBluetooth= (ToggleButton) view.findViewById(R.id.toggle_button_bluetooth);
-			switchBluetooth.setChecked(network.isBluetooth());
+			
+			
+			switchWifi.setChecked(network.getWifi().getBooleanSetting());
+			chkwifi.setChecked(network.getWifi().isEnable());
+			
+			switchBluetooth.setChecked(network.getBluetooth().getBooleanSetting());
+			
+			chkbluetooth.setChecked(network.getBluetooth().isEnable());
 			
 		}
 		return view;
@@ -48,12 +63,13 @@ public class NetworkSettingFragment extends Fragment {
 	public void updateData() {
 		if(view!=null && network!=null ){
 			ToggleButton switchWifi= (ToggleButton) view.findViewById(R.id.toggle_button_wifi);
-			boolean wifi=switchWifi.isChecked();
-			network.setWifi(wifi);
+			CheckBox chkwifi=(CheckBox)view.findViewById(R.id.checkBox_wifi_enable);
+			
+			network.setWifi(switchWifi.isChecked(), chkwifi.isChecked());
 			
 			ToggleButton switchBluetooth= (ToggleButton) view.findViewById(R.id.toggle_button_bluetooth);
-			boolean bluetooth= switchBluetooth.isChecked();
-			network.setBluetooth(bluetooth);
+			CheckBox chkbluetooth=(CheckBox)view.findViewById(R.id.checkBox_bluetooth_enable);
+			network.setBluetooth(switchBluetooth.isChecked(), chkbluetooth.isChecked());
 			
 		}
 
