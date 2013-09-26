@@ -7,10 +7,20 @@ public class BatteryLevel implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private int start;
 	private int end;
+	private boolean enable;
+
+	public boolean isEnable() {
+		return enable;
+	}
+
+	public void setEnable(boolean enable) {
+		this.enable = enable;
+	}
 
 	public BatteryLevel(int number1, int number2) {
 		start = number1;
 		end = number2;
+		enable=false;
 	}
 
 	public int getStart() {

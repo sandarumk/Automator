@@ -92,6 +92,7 @@ public class ProfileSettingsActivity extends SherlockFragmentActivity {
 			DisplaySettingsFragment.getInstance().updateData();
 			LocationFragment.getInstance().updateData();
 			NetworkSettingFragment.getInstance().updateData();
+			SetBatteryLevelFragment.getInstance().updateData();
 
 			if (index < 0) {
 				DataStore.addProfile(profile);

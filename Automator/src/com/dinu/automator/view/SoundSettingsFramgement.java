@@ -47,7 +47,6 @@ public class SoundSettingsFramgement extends Fragment {
 			
 		
 		chkVolume.setChecked(sound.getRingVolume().isEnable());
-		
 		seek.setProgress(sound.getRingVolume().getSetting());
 		
 		

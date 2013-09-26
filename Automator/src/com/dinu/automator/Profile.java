@@ -18,14 +18,24 @@ public class Profile implements Serializable{
 	private Location location;
 	private BatteryLevel batteryLevel;
 	boolean enable;
+	private boolean activated;
 	
 
 	
+	public boolean isActivated() {
+		return activated;
+	}
+
+	public void setActivated(boolean activated) {
+		this.activated = activated;
+	}
+
 	public Profile(Context context){
 		sounds=new SoundProfile(0,false,false,false,false,false);
 		display= new DisplayProfile(0, false,false, false,30, false,false,false);
 		location=new Location(Constant.INITIAL_LONGITUDE,Constant.INITIAL_LATTITUDE);
 		network= new NetworkProfile(false, false,false, false);
+		batteryLevel=new BatteryLevel(0,100);
 		
 //		LocationInfo latestInfo = new LocationInfo(context);
 //		latestInfo.refresh(context);
@@ -119,6 +129,9 @@ public class Profile implements Serializable{
 	}
 
 	public BatteryLevel getBatteryLevel() {
+		if(batteryLevel==null){
+			batteryLevel=new BatteryLevel(0, 100);
+		}
 		return batteryLevel;
 	}
 

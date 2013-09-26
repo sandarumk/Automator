@@ -20,15 +20,6 @@ import com.dinu.automator.view.SleepDialogFragment.SleepDialogListener;
 public class DisplaySettingsFragment extends Fragment implements SleepDialogListener {
 	private DisplayProfile display;
 	private int sleepTime;
-
-	public DisplayProfile getDisplay() {
-		return display;
-	}
-
-	public void setDisplay(DisplayProfile display) {
-		this.display = display;
-	}
-
 	private static DisplaySettingsFragment displaySettings;
 	private View view;
 
@@ -163,14 +154,19 @@ public class DisplaySettingsFragment extends Fragment implements SleepDialogList
 		}
 
 	}
-
-	public void sleepTimeChecker() {
-
+	public DisplayProfile getDisplay() {
+		return display;
 	}
+
+	public void setDisplay(DisplayProfile display) {
+		this.display = display;
+	}
+
+	
 
 	@Override
 	public void onDialogClick(DialogFragment dialog, int which) {
-		// TODO Auto-generated method stub
+	
 
 	};
 

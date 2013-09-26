@@ -21,16 +21,20 @@
     <uses-permission android:name="android.permission.SEND_SMS" />
 
     <application
+        android:name="com.dinu.automator.AutomatorApplication"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
+        
+        
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="AIzaSyATELM4it7M2mdKT4Pgfg_yAWHq30oidEE" />
 
         <service android:name="com.dinu.automator.locatorService" />
         <service android:name="com.littlefluffytoys.littlefluffylocationlibrary.LocationBroadcastService" />
+        <service android:name="com.dinu.automator.AutomaterService"/>
 
         <receiver
             android:name="com.littlefluffytoys.littlefluffylocationlibrary.StartupBroadcastReceiver"

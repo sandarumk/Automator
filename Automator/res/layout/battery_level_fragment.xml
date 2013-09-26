@@ -9,8 +9,61 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin">
     
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
     
+    <TextView
+        android:id="@+id/textView_enable_battery_range"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:text="@string/battery_level_enable" 
+        android:layout_gravity="center"/>
+    
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right" >
 
+    
+    <ToggleButton
+        android:id="@+id/toggle_button_enable_battery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" 
+        android:background="@drawable/selector_switch"
+        android:focusable="false"
+        android:textOn=""
+        android:textOff=""/>
+    </LinearLayout>
+    </LinearLayout>
+    
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+    
+    <TextView
+        android:id="@+id/textView_battery_range_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"/>
+    
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right" >
+    <TextView
+        android:id="@+id/textView_battery_range_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"/>
+    </LinearLayout>
+    </LinearLayout>
+    
     
 
 </LinearLayout>
