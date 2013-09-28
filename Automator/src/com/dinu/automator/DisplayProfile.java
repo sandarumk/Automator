@@ -2,6 +2,8 @@ package com.dinu.automator;
 
 import java.io.Serializable;
 
+import android.content.Context;
+
 import com.dinu.automator.util.DisplaySetting;
 
 public class DisplayProfile implements Serializable {
@@ -60,7 +62,28 @@ public class DisplayProfile implements Serializable {
 		this.pulseNotificationLight.setEnable(enable);
 	}
 
-	public void activate() {
+	public void activate(Context context) {
+		if(brightness.isEnable()){
+			DisplaySetting.setBrightness(context, brightness.getSetting());
+		}
+		if(sleep.isEnable()){
+			DisplaySetting.setSleep(context, sleep.getSetting());
+		}
+		if(autoRotation.isEnable()){
+			if(autoRotation.getBooleanSetting()){
+			DisplaySetting.activateAotorotation(context);
+			}else{
+				DisplaySetting.deactivateAutoRotation(context);
+			}
+		}
+		if(pulseNotificationLight.isEnable()){
+			if(pulseNotificationLight
+					.getBooleanSetting()){
+				DisplaySetting.activatePulseNotification(context);
+			}else{
+				DisplaySetting.deactivatePulseNotification(context);
+			}
+		}
 
 	}
 

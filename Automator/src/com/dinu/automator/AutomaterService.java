@@ -87,6 +87,10 @@ public class AutomaterService extends Service{
 	}
 	
 	private void handleLocations(LocationInfo locationInfo){
+		if(locations!=null){
+			// take every location if entering check whether it is in then activate and remove it from the list
+		
+		}
 		
 	}
 	

@@ -31,5 +31,15 @@ public class DisplaySetting {
 				android.provider.Settings.System.ACCELEROMETER_ROTATION, 0);
 
 	}
+	
+  // set pulse notification on
+	public static void activatePulseNotification(Context context){
+		
+	}
+	
+	// set pulse notification off
+	public static void deactivatePulseNotification(Context context){
+		
+	}
 
 }

@@ -46,10 +46,10 @@ public class Profile implements Serializable{
 		enable=true;
 	}
 
-	public void activate(){
-		sounds.activate();
-		display.activate();
-		network.activate();
+	public void activate(Context context){
+		sounds.activate(context);
+		display.activate(context);
+		network.activate(context);
 	}
 	
 	public void enable(){

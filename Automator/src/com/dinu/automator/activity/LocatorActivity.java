@@ -4,8 +4,10 @@ import android.app.Activity;
 import android.app.DialogFragment;
 import android.os.Bundle;
 
+import com.dinu.automator.Constant;
 import com.dinu.automator.R;
 import com.dinu.automator.view.SetLocationDialogFragment;
+import com.dinu.automator.view.SetLocationDialogFragment.NoticeDialogListener;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMap.OnMapLongClickListener;
 import com.google.android.gms.maps.GoogleMap.OnMarkerDragListener;
@@ -17,13 +19,16 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.littlefluffytoys.littlefluffylocationlibrary.LocationInfo;
 
-public class LocatorActivity extends Activity {
+public class LocatorActivity extends Activity implements NoticeDialogListener{
 
 	int radius;
 	GoogleMap map;
 	LatLng position;
 	Double lattitude = 21.0;
 	Double longitude = 7.0;
+	String name;
+	Boolean entering;
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -90,6 +95,29 @@ public class LocatorActivity extends Activity {
 			}
 		});
 
+	}
+
+	
+
+	@Override
+	public void onDialogNegativeClick(DialogFragment dialog) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onDialogPositiveClick(DialogFragment dialog, double lattitude, double longitude, int radius,
+			String name, boolean entering) {
+		this.lattitude=lattitude;
+		this.longitude=longitude;
+		this.radius=radius;
+		this.entering=entering;
+		getIntent().putExtra(Constant.INTENT_EXTRA_LOCATION_LATTITUDE, lattitude);
+		getIntent().putExtra(Constant.INTENT_EXTRA_LOCATION_LONGITUDE,longitude);
+		getIntent().putExtra(Constant.INTENT_EXTRA_LOCATION_RADIUS, radius);
+		getIntent().putExtra(Constant.INTENT_EXTRA_LOCATION_ENTERING, entering);
+		
+		
 	}
 
 }

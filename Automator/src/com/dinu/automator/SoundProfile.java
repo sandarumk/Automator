@@ -2,6 +2,10 @@ package com.dinu.automator;
 
 import java.io.Serializable;
 
+import android.content.Context;
+
+import com.dinu.automator.util.SoundSetting;
+
 public class SoundProfile implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -17,7 +21,24 @@ public class SoundProfile implements Serializable {
 
 				}
 
-	public void activate() {
+	public void activate(Context context) {
+		if(ringVolume.isEnable()){
+			SoundSetting.setVolume(context, ringVolume.getSetting());
+		}
+		if(silentMode.isEnable()){
+			if(silentMode.getBooleanSetting()){
+			SoundSetting.activateSilentmode(context);
+			}else{
+				SoundSetting.setNormal(context);
+			}
+		}
+		if(vibration.isEnable()){
+			if(vibration.getBooleanSetting()){
+				SoundSetting.activateVibrationMode(context);
+			}else{
+				SoundSetting.deactivateVibrate(context);
+			}
+		}
 
 	}
 

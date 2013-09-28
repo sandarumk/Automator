@@ -29,5 +29,11 @@ public class SoundSetting {
 		am.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
 		
 	}
+	
+	public static void deactivateVibrate(Context context){
+		AudioManager am = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
+		int volumen= am.getStreamVolume(AudioManager.STREAM_RING);
+		am.setStreamVolume(AudioManager.STREAM_RING, volumen, AudioManager.FLAG_ALLOW_RINGER_MODES|AudioManager.FLAG_PLAY_SOUND | AudioManager.FLAG_VIBRATE);
+	}
 
 }

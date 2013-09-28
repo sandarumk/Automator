@@ -2,6 +2,10 @@ package com.dinu.automator;
 
 import java.io.Serializable;
 
+import android.content.Context;
+
+import com.dinu.automator.util.NetworkSetting;
+
 public class NetworkProfile implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -32,7 +36,23 @@ public class NetworkProfile implements Serializable {
 		this.bluetooth.setEnable(enable);
 	}
 
-	public void activate() {
+	public void activate(Context context) {
+		if(bluetooth.isEnable()){
+			if(bluetooth.getBooleanSetting()){
+				NetworkSetting.OnBlueTooth(context);
+			}else{
+				NetworkSetting.offBlueTooth();
+			}
+			
+			
+		}
+		if(wifi.isEnable()){
+			if(wifi.getBooleanSetting()){
+				NetworkSetting.OnWifi(context);
+			}else{
+				NetworkSetting.offWifi(context);
+			}
+		}
 
 	}
 }

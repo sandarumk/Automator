@@ -1,5 +1,6 @@
 package com.dinu.automator.view;
 
+import com.dinu.automator.Constant;
 import com.dinu.automator.Location;
 import com.dinu.automator.R;
 import com.dinu.automator.activity.LocatorActivity;
@@ -28,6 +29,12 @@ public class LocationFragment extends Fragment {
 	private static LocationFragment locationFragment;
 	private Location location;
 	private View view;
+	double lat;
+	double lon;
+	boolean ent;
+	int rad;
+	String nam;
+	
 
 	public Location getLocation() {
 		return location;
@@ -54,32 +61,49 @@ public class LocationFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
 		view = inflater.inflate(R.layout.location_fragment, null);
+		EditText name= (EditText)view.findViewById(R.id.editText_name);
+		EditText longitude= (EditText)view.findViewById(R.id.editText_longitude);
+		EditText lattitude= (EditText)view.findViewById(R.id.editText_lttitude);
+		EditText radius=(EditText)view.findViewById(R.id.editText_radius);
+		RadioButton entering=(RadioButton)view.findViewById(R.id.radiobutton_entering);
+		RadioButton leaving=(RadioButton)view.findViewById(R.id.radiobutton_leaving);
+		
+		
+		
 		if (location !=null) {
-			EditText name= (EditText)view.findViewById(R.id.editText_name);
-			name.setText("");
+			
+			String defaultName="";
 			if(location.getName()!=null){
-			name.setText(location.getName());
-			}
+				defaultName=location.getName();
+				}
 			
-			EditText longitude= (EditText)view.findViewById(R.id.editText_longitude);
+			nam=getActivity().getIntent().getStringExtra(Constant.INTENT_EXTRA_LOCATION_NAME);
+			if(name==null){
+				nam=defaultName;
+			}
+			name.setText(nam);
+			
+			
+			
 			longitude.setText(location.getLangitude().toString());
+			lon=getActivity().getIntent().getDoubleExtra(Constant.INTENT_EXTRA_LOCATION_LONGITUDE, location.getLangitude());
+			longitude.setText(lon+"");
 			
-			EditText lattitude= (EditText)view.findViewById(R.id.editText_lttitude);
+			
 			lattitude.setText(location.getLattitude().toString());
+			lat=getActivity().getIntent().getDoubleExtra(Constant.INTENT_EXTRA_LOCATION_LATTITUDE, location.getLattitude());
+			lattitude.setText(lat+"");
 			
 			
-			EditText radius=(EditText)view.findViewById(R.id.editText_radius);
+			
 			radius.setText(location.getRadius()+"");
+			rad=getActivity().getIntent().getIntExtra(Constant.INTENT_EXTRA_LOCATION_RADIUS, location.getRadius());
+			radius.setText(rad+"");
 			
-			RadioButton entering=(RadioButton)view.findViewById(R.id.radiobutton_entering);
-			RadioButton leaving=(RadioButton)view.findViewById(R.id.radiobutton_leaving);
-			if(location.isEntering()==true){
-				entering.setChecked(true);
-				leaving.setChecked(false);
-			}else{
-				entering.setChecked(false);
-				leaving.setChecked(true);
-			}
+			ent=getActivity().getIntent().getBooleanExtra(Constant.INTENT_EXTRA_LOCATION_ENTERING,location.isEntering());
+			entering.setChecked(ent);
+			leaving.setChecked(!ent);
+
 
 		
 			}
@@ -96,6 +120,7 @@ public class LocationFragment extends Fragment {
 
 			}
 		});
+		
 		
 		return view;
 	}

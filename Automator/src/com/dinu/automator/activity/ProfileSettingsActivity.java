@@ -77,7 +77,8 @@ public class ProfileSettingsActivity extends SherlockFragmentActivity {
 	@Override
 	public void onBackPressed() {
 
-		super.onBackPressed();
+		showSaveChangesDialog(this);
+		
 	}
 
 	@Override
@@ -162,6 +163,34 @@ public class ProfileSettingsActivity extends SherlockFragmentActivity {
 				});
 		builder.create().show();
 	}
+	
+	private void showSaveChangesDialog(final Context context) {
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		builder.setMessage("Do you want to save changes to the the profile ??").setPositiveButton(R.string.dialog_button_save, new DialogInterface.OnClickListener() {
+
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				// save the profile
+				if(index<0){
+					showSaveDialog(context);
+				}else{
+					DataStore.saveProfiles(context);
+					finish();
+				}
+				
+				
+
+			}
+		}).setNegativeButton("No", new DialogInterface.OnClickListener() {
+
+			@Override
+			public void onClick(DialogInterface dialog, int id) {
+				finish();
+			}
+		});
+		builder.create().show();
+			
+		}
 
 	class TabbedPaneAdapter extends FragmentPagerAdapter {
 		public TabbedPaneAdapter(FragmentManager fm) {
