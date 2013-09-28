@@ -78,12 +78,12 @@
         
     </TableRow>
     
-    <TableRow
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
+    
     
         <RadioGroup
-            android:id="@+id/radiogroup_entering">
+            android:id="@+id/radiogroup_entering"
+            android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
         <RadioButton
             android:id="@+id/radiobutton_entering"
@@ -99,7 +99,7 @@
         </RadioGroup>
        
   
-    </TableRow>
+    
         
         
         

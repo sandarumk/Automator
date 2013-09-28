@@ -67,9 +67,9 @@ public class SetLocationDialogFragment extends DialogFragment {
         builder.setMessage(R.string.title_dialog_set_location)
                .setPositiveButton(R.string.dialog_button_save, new DialogInterface.OnClickListener() {
                    public void onClick(DialogInterface dialog, int id) {
-                	   getActivity().finish();
                 	   
                 	   mListener.onDialogPositiveClick(SetLocationDialogFragment.this, Double.parseDouble(textLatitude.getText().toString()),Double.parseDouble(textLongitude.getText().toString()), Integer.parseInt(radius.getText().toString()), name.getText().toString(), entering.isChecked());
+                	   getActivity().finish();
                    
                    
                    // save

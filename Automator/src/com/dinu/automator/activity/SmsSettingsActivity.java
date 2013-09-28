@@ -4,6 +4,7 @@ import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.MenuItem;
 import com.dinu.automator.Constant;
 import com.dinu.automator.DataStore;
+import com.dinu.automator.Location;
 import com.dinu.automator.Profile;
 import com.dinu.automator.R;
 import com.dinu.automator.Sms;
@@ -34,6 +35,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.RadioButton;
 
 public class SmsSettingsActivity extends SherlockActivity {
 	
@@ -42,6 +44,12 @@ public class SmsSettingsActivity extends SherlockActivity {
 	private static final int CONTACT_PICKER_RESULT = 1001;
 	private EditText num;
 	private EditText message;
+	double lat;
+	double lon;
+	boolean ent;
+	int rad;
+	String nam;
+	Location loc;
 	
 
 	@Override
@@ -63,13 +71,44 @@ public class SmsSettingsActivity extends SherlockActivity {
 		} else {
 		smsInstance = DataStore.getsmsList().get(index);
 		}
-		
+		loc=smsInstance.getLocation();
+		if (loc!=null) {
+			EditText name= (EditText)findViewById(R.id.editText_sms_location_name);
+			
+			if(loc.getName()!=null){
+			name.setText(loc.getName());
+			}else{
+				name.setText("");
+			}
+
+			EditText longitude= (EditText)findViewById(R.id.editText_sms_location_longitude);
+			longitude.setText(loc.getLangitude().toString());
+
+			EditText lattitude= (EditText)findViewById(R.id.editText_sms_location_lttitude);
+			lattitude.setText(loc.getLattitude().toString());
+
+
+			EditText radius=(EditText)findViewById(R.id.editText_sms_location_radius);
+			radius.setText(loc.getRadius()+"");
+
+			RadioButton entering=(RadioButton)findViewById(R.id.radiobutton_sms_location_entering);
+			RadioButton leaving=(RadioButton)findViewById(R.id.radiobutton_sms_location_leaving);
+			if(loc.isEntering()==true){
+				entering.setChecked(true);
+				leaving.setChecked(false);
+			}else{
+				entering.setChecked(false);
+				leaving.setChecked(true);
+			}
+		}
+
+
 		Button setLocation = (Button)findViewById(R.id.button_sms_set_location);
 		setLocation.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
-				startActivity(new Intent(SmsSettingsActivity.this,LocatorActivity.class));
+				startActivityForResult(new Intent(SmsSettingsActivity.this,LocatorActivity.class),9000);
 				
 			}
 		});
@@ -106,7 +145,7 @@ public class SmsSettingsActivity extends SherlockActivity {
 	@Override
 	public void onBackPressed() {
 
-		super.onBackPressed();
+		showSaveChangesDialog(this);
 	}
 
 	@Override
@@ -205,7 +244,36 @@ public class SmsSettingsActivity extends SherlockActivity {
 		        	    String number = cursor.getString(phoneIdx);
 		        	    num.setText(number);
 		        	} 
-		            break;  
+		            break; 
+		        case 9000:
+		        	lat=data.getDoubleExtra(Constant.INTENT_EXTRA_LOCATION_LATTITUDE, 0);
+		     	   if(lat!=0){
+		     		   EditText lattitude= (EditText)findViewById(R.id.editText_sms_location_lttitude);
+		     			lattitude.setText(lat+"");
+		     	   }
+		     	   lon=data.getDoubleExtra(Constant.INTENT_EXTRA_LOCATION_LONGITUDE, 0);
+		     	   if(lon!=0){
+		     		   EditText longitude= (EditText)findViewById(R.id.editText_sms_location_longitude);
+		     			longitude.setText(lon+"");
+		     	   }
+		     	   rad=data.getIntExtra(Constant.INTENT_EXTRA_LOCATION_RADIUS, 0);
+		     	   if(rad!=0){
+		     		   EditText radius=(EditText)findViewById(R.id.editText_sms_location_radius);
+		     			radius.setText(rad+"");
+		     	   }
+		     	   nam=data.getStringExtra(Constant.INTENT_EXTRA_LOCATION_NAME);
+		     	   if(nam!=null){
+		     		   EditText name= (EditText)findViewById(R.id.editText_sms_location_name);
+		     		   name.setText(nam);
+		     	   }
+		     	   ent=data.getBooleanExtra(Constant.INTENT_EXTRA_LOCATION_ENTERING, false);
+		     	   RadioButton entering=(RadioButton)findViewById(R.id.radiobutton_sms_location_entering);
+		     		RadioButton leaving=(RadioButton)findViewById(R.id.radiobutton_sms_location_leaving);
+		     		entering.setChecked(ent);
+		     		leaving.setChecked(!ent);
+		     	   
+		     			   
+		     	  
 		        }  
 		    }  
 	}
@@ -214,8 +282,64 @@ public class SmsSettingsActivity extends SherlockActivity {
 		if(smsInstance!=null){
 			smsInstance.setNumber(num.getText().toString());
 			smsInstance.setMessage(message.getText().toString());
-			// set the location from the dialog box
+if (loc !=null) {
+				
+				EditText name= (EditText)findViewById(R.id.editText_sms_location_name);
+				loc.setName(name.getText().toString());
+				
+				EditText longitude= (EditText)findViewById(R.id.editText_sms_location_longitude);
+				loc.setLangitude(Double.parseDouble(longitude.getText().toString()));
+				
+				EditText lattitude= (EditText)findViewById(R.id.editText_sms_location_lttitude);
+				loc.setLattitude(Double.parseDouble(lattitude.getText().toString()));
+				
+				EditText radius=(EditText)findViewById(R.id.editText_sms_location_radius);
+				loc.setRadius(Integer.parseInt(radius.getText().toString()));
+				
+				RadioButton entering=(RadioButton)findViewById(R.id.radiobutton_sms_location_entering);
+				loc.setEntering(entering.isChecked());
+				
+				
+				
+					
+				}
+				
+			smsInstance.setLocation(loc);
 		}
 	}
+	private void showSaveChangesDialog(final Context context) {
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		builder.setMessage("Do you want to save changes to the the sms ??").setPositiveButton(R.string.dialog_button_save, new DialogInterface.OnClickListener() {
+
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				// save the profile
+				if(index<0){
+					showSaveDialog(context);
+				}else{
+					DataStore.saveSmS(context);
+					finish();
+				}
+				
+				
+
+			}
+		}).setNegativeButton("No", new DialogInterface.OnClickListener() {
+
+			@Override
+			public void onClick(DialogInterface dialog, int id) {
+				finish();
+			}
+		});
+		builder.create().show();
+			
+		}
+
+	
+	
+	
+	   
+	 
+
 
 }

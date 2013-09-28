@@ -18,12 +18,103 @@
         android:gravity="center"
         android:padding="@dimen/activity_horizontal_margin"/>
     
+        <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+    <TextView
+        android:id="@+id/textView_alarm_location_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/dialog_text_location_name" />
+    <EditText
+        android:id="@+id/editText_alarm_location_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+       />
+    </TableRow>
+    
+        <TableRow 
+        android:layout_width="match_parent" 
+        android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/textView_alarm_location_lattitude"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/dialog_text_lattitude" />
+    <EditText
+        android:id="@+id/editText_alarm_location_lttitude"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"/>
+        
+    </TableRow>
+        <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+    <TextView
+        android:id="@+id/textView_alarm_location_longitude"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/dialog_text_longitude" />
+    <EditText
+        android:id="@+id/editText_alarm_location_longitude"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"/>
+        
+    </TableRow>
+        
+    
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+    <TextView
+        android:id="@+id/textView_alarm_location_radius"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/dialog_text_location_radius" />
+    <EditText
+        android:id="@+id/editText_alarm_location_radius"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"/>
+        
+    </TableRow>
+    
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+    
+        <RadioGroup
+            android:id="@+id/radiogroup_alarm_location_entering">
+
+        <RadioButton
+            android:id="@+id/radiobutton_alarm_location_entering"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/dialog_list_choice_item1"
+            android:clickable="true"/>
+        <RadioButton
+            android:id="@+id/radiobutton_alarm_location_leaving"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/dialog_list_choice_item2"/>
+        </RadioGroup>
+       
+  
+    </TableRow>
+    
     <EditText 
         android:id="@+id/editText_alarm_set_label"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/alarm_edit_text_label"
         android:inputType="text"/>
+    
 
   
 

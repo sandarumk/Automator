@@ -2,6 +2,7 @@ package com.dinu.automator.activity;
 
 import android.app.Activity;
 import android.app.DialogFragment;
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.dinu.automator.Constant;
@@ -112,12 +113,25 @@ public class LocatorActivity extends Activity implements NoticeDialogListener{
 		this.longitude=longitude;
 		this.radius=radius;
 		this.entering=entering;
-		getIntent().putExtra(Constant.INTENT_EXTRA_LOCATION_LATTITUDE, lattitude);
-		getIntent().putExtra(Constant.INTENT_EXTRA_LOCATION_LONGITUDE,longitude);
-		getIntent().putExtra(Constant.INTENT_EXTRA_LOCATION_RADIUS, radius);
-		getIntent().putExtra(Constant.INTENT_EXTRA_LOCATION_ENTERING, entering);
+		this.name=name;
+		
+		
 		
 		
 	}
+	
+	@Override
+	public void finish() {
+	  // Prepare data intent 
+	  Intent data = new Intent();
+	  data.putExtra(Constant.INTENT_EXTRA_LOCATION_LATTITUDE, lattitude);
+	  data.putExtra(Constant.INTENT_EXTRA_LOCATION_LONGITUDE,longitude);
+	  data.putExtra(Constant.INTENT_EXTRA_LOCATION_RADIUS, radius);
+	data.putExtra(Constant.INTENT_EXTRA_LOCATION_ENTERING, entering);
+	data.putExtra(Constant.INTENT_EXTRA_LOCATION_NAME, name);
+	  // Activity finished ok, return the data
+	  setResult(RESULT_OK, data);
+	  super.finish();
+	} 
 
 }
