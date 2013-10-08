@@ -2,6 +2,8 @@ package com.dinu.automator;
 
 import java.io.Serializable;
 
+import com.littlefluffytoys.littlefluffylocationlibrary.LocationInfo;
+
 public class Location implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -77,6 +79,29 @@ public class Location implements Serializable {
 		this.langitude = langitude;
 		this.langitude = lattitude;
 		this.radius = radius;
+	}
+	
+	public boolean checkNear( LocationInfo locInfo, double radius )
+	{
+        android.location.Location point= new android.location.Location(" ");
+        point.setLatitude( locInfo.lastLat );
+		point.setLongitude( locInfo.lastLong );
+		
+		android.location.Location location = new android.location.Location( "" );
+		location.setLatitude( lattitude);
+		location.setLongitude( langitude );
+		
+		float distance=point.distanceTo(location);
+
+		if ( distance <= radius )
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+
 	}
 
 }

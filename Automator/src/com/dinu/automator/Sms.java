@@ -1,8 +1,12 @@
 package com.dinu.automator;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+
+import com.google.android.gms.internal.am;
 
 import android.content.Context;
+import android.telephony.SmsManager;
 
 public class Sms implements Serializable{
 
@@ -16,6 +20,7 @@ public class Sms implements Serializable{
 	private String message;
 	private Location location;
 	private boolean enabled;
+	private boolean sent;
 	
 	public Sms(){
 		location=new Location(Constant.INITIAL_LONGITUDE,Constant.INITIAL_LATTITUDE);
@@ -57,6 +62,20 @@ public class Sms implements Serializable{
 	}
 	public void setLocation(Location location) {
 		this.location = location;
+	}
+	public void sendSMS(){
+		
+		SmsManager smsManager=SmsManager.getDefault();
+		ArrayList<String> parts = smsManager.divideMessage(message);
+		smsManager.sendMultipartTextMessage(number, null, parts, null, null);
+	}
+	
+	public boolean getsent(){
+		return sent;
+	}
+	
+	public void setSent(boolean send){
+		sent=send;
 	}
 	
 	

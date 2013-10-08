@@ -2,6 +2,8 @@ package com.dinu.automator;
 
 import java.io.Serializable;
 
+import android.app.AlarmManager;
+
 public class Alarm implements Serializable {
 	
 	
@@ -12,7 +14,15 @@ public class Alarm implements Serializable {
 	private boolean enabled;
 	private String label;
 	private Location location;
-	
+	private boolean activated;
+	public boolean isActivated() {
+		return activated;
+	}
+
+	public void setActivated(boolean activated) {
+		this.activated = activated;
+	}
+
 	public Alarm(){
 		location=new Location(Constant.INITIAL_LONGITUDE,Constant.INITIAL_LATTITUDE);
 		enabled = true;
@@ -48,6 +58,11 @@ public class Alarm implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public void activateAlarm(){
+		//AlarmManager alarmManager=(AlarmManager)getSystemService(ALARM_SERVICE);
+		//ring the alarm
 	}
 
 }
