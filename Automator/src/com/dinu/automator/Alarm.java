@@ -2,7 +2,12 @@ package com.dinu.automator;
 
 import java.io.Serializable;
 
-import android.app.AlarmManager;
+import android.app.NotificationManager;
+import android.content.Context;
+import android.support.v4.app.NotificationCompat;
+
+
+
 
 public class Alarm implements Serializable {
 	
@@ -60,7 +65,18 @@ public class Alarm implements Serializable {
 		this.name = name;
 	}
 	
-	public void activateAlarm(){
+	public void activateAlarm(Context context){
+		
+		NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context)
+		        .setSmallIcon(R.drawable.ic_stat_alarm)
+		        .setContentTitle("Automator Notification")
+		        .setContentText("Location "+location.getName()+" Reached");
+		NotificationManager mNotificationManager =
+			    (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+		mBuilder.setAutoCancel(true);
+		mNotificationManager.notify(0, mBuilder.build());
+		
+		
 		//AlarmManager alarmManager=(AlarmManager)getSystemService(ALARM_SERVICE);
 		//ring the alarm
 	}

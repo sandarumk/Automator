@@ -9,7 +9,8 @@ public class AutomatorApplication extends Application {
 	@Override
 	public void onCreate() {
 		super.onCreate();
-		LocationLibrary.initialiseLibrary(getBaseContext(), "com.dinu.automator");
+		LocationLibrary.showDebugOutput(true);
+		LocationLibrary.initialiseLibrary(getBaseContext(), 60*1000, 2 * 60 * 1000,"com.dinu.automator");
 		
 //		LocationLibrary.
 	}

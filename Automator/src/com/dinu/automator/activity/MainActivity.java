@@ -13,6 +13,8 @@ import android.widget.ToggleButton;
 
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.MenuItem;
+import com.dinu.automator.AutomaterService;
+import com.dinu.automator.AutomatorApplication;
 import com.dinu.automator.DataStore;
 import com.dinu.automator.R;
 
@@ -96,6 +98,15 @@ public class MainActivity extends SherlockActivity {
 			}
 		});
 
+	}
+	@Override
+	public void onBackPressed() {
+		
+		super.onBackPressed();
+		
+		Intent intent = new Intent(this, AutomaterService.class);
+		stopService(intent);
+		startService(intent);
 	}
 
 	@Override
