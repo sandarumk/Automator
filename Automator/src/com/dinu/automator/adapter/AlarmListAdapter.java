@@ -50,7 +50,7 @@ public class AlarmListAdapter extends ArrayAdapter<Alarm> {
 			if (alarmInstance != null && alarmInstance.getName() != null) {
 				text.setText(alarmInstance.getName());
 				final ToggleButton switchButton = (ToggleButton) view.findViewById(R.id.alarm_list_row_button);
-
+				switchButton.setChecked(alarmInstance.isEnabled());
 				switchButton.setOnClickListener(new View.OnClickListener() {
 
 					@Override

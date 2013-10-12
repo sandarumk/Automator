@@ -61,6 +61,7 @@
     <string name="sms_message_text_view">Enter Message</string>
     <string name="sms_contact_picker_hint">Search By Name</string>
     <string name="battery_level_enable">Enable Battery Level</string>
+    <string name="location_enable">Enable Location</string>
 
     <string-array name="sleep">
         <item>15 sec</item>

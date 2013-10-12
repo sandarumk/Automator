@@ -49,7 +49,7 @@ public class SmsListAdapter extends ArrayAdapter<Sms>{
 			if (smsInstance != null && smsInstance.getName() != null) {
 				text.setText(smsInstance.getName());
 				final ToggleButton switchButton = (ToggleButton) view.findViewById(R.id.sms_list_row_button);
-
+				switchButton.setChecked(smsInstance.isEnabled());
 				switchButton.setOnClickListener(new View.OnClickListener() {
 
 					@Override

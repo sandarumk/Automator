@@ -2,6 +2,8 @@ package com.dinu.automator;
 
 import java.io.Serializable;
 
+import android.util.Log;
+
 import com.littlefluffytoys.littlefluffylocationlibrary.LocationInfo;
 
 public class Location implements Serializable {
@@ -83,6 +85,7 @@ public class Location implements Serializable {
 	
 	public boolean checkNear( LocationInfo locInfo, double radius )
 	{
+		Log.d("Automator service","check near called");
         android.location.Location point= new android.location.Location(" ");
         point.setLatitude( locInfo.lastLat );
 		point.setLongitude( locInfo.lastLong );
@@ -95,10 +98,12 @@ public class Location implements Serializable {
 
 		if ( distance <= radius )
 		{
+			Log.d("Automator Sevice","In region");
 			return true;
 		}
 		else
-		{
+		{ 
+			Log.d("Automator Sevice","not In region");
 			return false;
 		}
 

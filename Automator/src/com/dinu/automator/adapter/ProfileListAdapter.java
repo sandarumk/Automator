@@ -50,6 +50,7 @@ public class ProfileListAdapter extends ArrayAdapter<Profile> {
 			if (profile != null && profile.getName() != null) {
 				text.setText(profile.getName());
 				final ToggleButton switchButton = (ToggleButton) view.findViewById(R.id.profile_list_row_button);
+				switchButton.setChecked(profile.isEnable());
 
 				switchButton.setOnClickListener(new View.OnClickListener() {
 
@@ -57,7 +58,7 @@ public class ProfileListAdapter extends ArrayAdapter<Profile> {
 					public void onClick(View v) {
 						// enable or disable profile
 						if (switchButton.isChecked() == true) {
-							Toast.makeText(context, "enabled sms " + profile.getName(), Toast.LENGTH_LONG).show();
+							Toast.makeText(context, "enabled profile " + profile.getName(), Toast.LENGTH_LONG).show();
 							profile.setEnable(true);
 						} else if (switchButton.isChecked() == false) {
 							Toast.makeText(context, "disabled profile " + profile.getName(), Toast.LENGTH_LONG).show();

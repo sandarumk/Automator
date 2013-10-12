@@ -24,6 +24,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.SeekBar;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 public class LocationFragment extends Fragment {
 	Button setLocationMap;
@@ -80,6 +81,9 @@ public class LocationFragment extends Fragment {
 
 			EditText lattitude= (EditText)view.findViewById(R.id.editText_lttitude);
 			lattitude.setText(location.getLattitude().toString());
+			
+			ToggleButton enableLocation=(ToggleButton)view.findViewById(R.id.toggle_button_enable_location);
+			enableLocation.setChecked(location.isEnable());
 
 
 			EditText radius=(EditText)view.findViewById(R.id.editText_radius);
@@ -135,6 +139,8 @@ public class LocationFragment extends Fragment {
 		
 		RadioButton entering=(RadioButton)view.findViewById(R.id.radiobutton_entering);
 		location.setEntering(entering.isChecked());
+		ToggleButton enableLocation=(ToggleButton)view.findViewById(R.id.toggle_button_enable_location);
+		location.setEnable(enableLocation.isChecked());
 		
 		
 		
