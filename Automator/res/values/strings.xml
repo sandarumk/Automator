@@ -37,6 +37,7 @@
     <string name="dialog_list_choice_item1">Entering</string>
     <string name="dialog_list_choice_item2">Leaving</string>
     <string name="dialog_button_save">Save</string>
+    <string name="dialog_button_yes">Yes</string>
     <string name="dialog_button_cancel">Cancel</string>
     <string name="fragment_set_location_on_map_button">Set Location On Map</string>
     <string name="title_activity_location">LocationActivity</string>

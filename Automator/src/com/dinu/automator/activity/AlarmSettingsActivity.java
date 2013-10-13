@@ -159,7 +159,7 @@ public class AlarmSettingsActivity extends SherlockActivity {
 		final EditText text = (EditText) view.findViewById(R.id.save_dialog_save);
 		text.setHint("Alarm Name");
 		builder.setView(view);
-		builder.setPositiveButton(R.string.dialog_button_save, new DialogInterface.OnClickListener() {
+		builder.setPositiveButton(R.string.dialog_button_yes, new DialogInterface.OnClickListener() {
 
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
@@ -264,7 +264,7 @@ public class AlarmSettingsActivity extends SherlockActivity {
 	}
 	private void showSaveChangesDialog(final Context context) {
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		builder.setMessage("Do you want to save changes to the the alarm ??").setPositiveButton(R.string.dialog_button_save, new DialogInterface.OnClickListener() {
+		builder.setMessage("Do you want to save changes to the the alarm?").setPositiveButton(R.string.dialog_button_yes, new DialogInterface.OnClickListener() {
 
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
