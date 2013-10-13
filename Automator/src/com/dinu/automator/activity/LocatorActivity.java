@@ -72,9 +72,7 @@ public class LocatorActivity extends Activity implements NoticeDialogListener{
 
 			@Override
 			public void onMarkerDrag(Marker marker) {
-				// Toast toast=Toast.makeText(getApplicationContext(),
-				// marker1.getPosition().toString(), Toast.LENGTH_SHORT);
-				// toast.show();
+			
 
 			}
 		});

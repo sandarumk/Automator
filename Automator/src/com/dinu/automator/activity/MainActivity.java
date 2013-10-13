@@ -28,8 +28,7 @@ public class MainActivity extends SherlockActivity {
 
 		// handle profile
 		TextView profileView = (TextView) findViewById(R.id.main_menu_profile_text);
-		final ToggleButton enableProfile = (ToggleButton) findViewById(R.id.enable_profile_switch);
-
+		
 		// handle click on the profile text view
 		profileView.setOnClickListener(new View.OnClickListener() {
 
@@ -40,19 +39,12 @@ public class MainActivity extends SherlockActivity {
 			}
 		});
 
-		// handle click on the enable button
-		enableProfile.setOnClickListener(new View.OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				// enable location based profile service
-				DataStore.setProfileEnabled(enableProfile.isChecked());
-			}
-		});
+		
+		
 
 		// handle alarm
 		TextView alarmView = (TextView) findViewById(R.id.main_menu_alarm_text);
-		final ToggleButton enableAlarm = (ToggleButton) findViewById(R.id.enable_alarm_switch);
+		
 
 		// handle click on the alarm text view
 		alarmView.setOnClickListener(new View.OnClickListener() {
@@ -64,20 +56,11 @@ public class MainActivity extends SherlockActivity {
 			}
 		});
 
-		// handle click on the enable button
-		enableAlarm.setOnClickListener(new View.OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				// enable location based alarm service
-				DataStore.setAlarmEnabled(enableAlarm.isChecked());
-			}
-		});
+		
 
 		// handle sms
 		TextView smsView = (TextView) findViewById(R.id.main_menu_sms_text);
-		final ToggleButton enableSms = (ToggleButton) findViewById(R.id.enable_sms_switch);
-
+		
 		// handle click on the sms text view
 		smsView.setOnClickListener(new View.OnClickListener() {
 
@@ -88,16 +71,7 @@ public class MainActivity extends SherlockActivity {
 			}
 		});
 
-		// handle click on the enable button
-		enableSms.setOnClickListener(new View.OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				// enable location based alarm service
-				DataStore.setSmsEnabled(enableSms.isChecked());
-			}
-		});
-
+		
 	}
 	@Override
 	public void onBackPressed() {

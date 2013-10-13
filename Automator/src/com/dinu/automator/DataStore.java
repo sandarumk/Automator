@@ -22,36 +22,12 @@ public class DataStore {
 	private static List<Profile> profiles;
 	private static List<Alarm> alarms;
 	private static List<Sms> sms;
-	// state of functionalities
-	private static boolean profileEnabled;
-	private static boolean alarmEnabled;
-	private static boolean smsEnabled;
+	
 	
 	
 
-	public static boolean isProfileEnabled() {
-		return profileEnabled;
-	}
 
-	public static void setProfileEnabled(boolean profileEnabled) {
-		DataStore.profileEnabled = profileEnabled;
-	}
-
-	public static boolean isAlarmEnabled() {
-		return alarmEnabled;
-	}
-
-	public static void setAlarmEnabled(boolean alarmEnabled) {
-		DataStore.alarmEnabled = alarmEnabled;
-	}
-
-	public static boolean isSmsEnabled() {
-		return smsEnabled;
-	}
-
-	public static void setSmsEnabled(boolean smsEnabled) {
-		DataStore.smsEnabled = smsEnabled;
-	}
+	
 
 	public static void saveData(Context context) {
 		saveAlarms(context);

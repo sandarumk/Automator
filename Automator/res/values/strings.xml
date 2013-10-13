@@ -33,7 +33,7 @@
     <string name="dialog_text_lattitude">Latitude</string>
     <string name="dialog_text_longitude">Longitude</string>
     <string name="dialog_text_location_name">Location Name</string>
-    <string name="dialog_text_location_radius">Radius</string>
+    <string name="dialog_text_location_radius">Radius (m)</string>
     <string name="dialog_list_choice_item1">Entering</string>
     <string name="dialog_list_choice_item2">Leaving</string>
     <string name="dialog_button_save">Save</string>
