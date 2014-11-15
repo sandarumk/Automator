@@ -6,8 +6,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.actionbarsherlock.app.SherlockActivity;
 import com.dinu.automator.Constant;
 import com.dinu.automator.R;
+import com.dinu.automator.util.ViewUtils;
 import com.dinu.automator.view.SetLocationDialogFragment;
 import com.dinu.automator.view.SetLocationDialogFragment.NoticeDialogListener;
 import com.google.android.gms.maps.CameraUpdate;
@@ -24,7 +26,7 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.littlefluffytoys.littlefluffylocationlibrary.LocationInfo;
 
-public class LocatorActivity extends Activity implements NoticeDialogListener {
+public class LocatorActivity extends SherlockActivity implements NoticeDialogListener {
 
 	int radius;
 	GoogleMap map;
@@ -40,6 +42,8 @@ public class LocatorActivity extends Activity implements NoticeDialogListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_locator);
+		
+		ViewUtils.setActionBarColor(this);
 
 		map = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
 		map.getUiSettings().setMyLocationButtonEnabled(true);

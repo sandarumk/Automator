@@ -22,6 +22,7 @@ import com.dinu.automator.R.layout;
 import com.dinu.automator.R.menu;
 import com.dinu.automator.adapter.AlarmListAdapter;
 import com.dinu.automator.adapter.ProfileListAdapter;
+import com.dinu.automator.util.ViewUtils;
 
 public class AlarmActivity extends SherlockActivity {
 
@@ -31,7 +32,7 @@ public class AlarmActivity extends SherlockActivity {
 		setContentView(R.layout.activity_alarm);
 		getSupportActionBar().show();
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
+		ViewUtils.setActionBarColor(this);
 	}
 	
 	@Override

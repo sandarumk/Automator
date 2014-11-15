@@ -12,6 +12,7 @@ import com.dinu.automator.R.id;
 import com.dinu.automator.R.layout;
 import com.dinu.automator.R.menu;
 import com.dinu.automator.R.string;
+import com.dinu.automator.util.ViewUtils;
 import com.dinu.automator.view.DisplaySettingsFragment;
 import com.dinu.automator.view.LocationFragment;
 import com.dinu.automator.view.SoundSettingsFramgement;
@@ -56,7 +57,7 @@ public class SmsSettingsActivity extends SherlockActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_sms_settings);
-		
+		ViewUtils.setActionBarColor(this);
 
 		if (getSupportActionBar() != null) {
 			getSupportActionBar().show();

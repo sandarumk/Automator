@@ -6,6 +6,8 @@ package com.dinu.automator.activity;
  */
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -17,6 +19,7 @@ import com.dinu.automator.AutomaterService;
 import com.dinu.automator.AutomatorApplication;
 import com.dinu.automator.DataStore;
 import com.dinu.automator.R;
+import com.dinu.automator.util.ViewUtils;
 
 public class MainActivity extends SherlockActivity {
 
@@ -26,9 +29,11 @@ public class MainActivity extends SherlockActivity {
 		setContentView(R.layout.activity_main);
 		DataStore.retrieveData(this);
 
+//		/ViewUtils.setActionBarColor(this);
+
 		// handle profile
-		TextView profileView = (TextView) findViewById(R.id.main_menu_profile_text);
-		
+		View profileView = findViewById(R.id.main_menu_profile_text);
+
 		// handle click on the profile text view
 		profileView.setOnClickListener(new View.OnClickListener() {
 
@@ -39,12 +44,8 @@ public class MainActivity extends SherlockActivity {
 			}
 		});
 
-		
-		
-
 		// handle alarm
-		TextView alarmView = (TextView) findViewById(R.id.main_menu_alarm_text);
-		
+		View alarmView = findViewById(R.id.main_menu_alarm_text);
 
 		// handle click on the alarm text view
 		alarmView.setOnClickListener(new View.OnClickListener() {
@@ -56,11 +57,9 @@ public class MainActivity extends SherlockActivity {
 			}
 		});
 
-		
-
 		// handle sms
-		TextView smsView = (TextView) findViewById(R.id.main_menu_sms_text);
-		
+		View smsView = findViewById(R.id.main_menu_sms_text);
+
 		// handle click on the sms text view
 		smsView.setOnClickListener(new View.OnClickListener() {
 
@@ -71,36 +70,15 @@ public class MainActivity extends SherlockActivity {
 			}
 		});
 
-		
 	}
+
 	@Override
 	public void onBackPressed() {
-		
+
 		super.onBackPressed();
-		
+
 		Intent intent = new Intent(this, AutomaterService.class);
 		stopService(intent);
 		startService(intent);
 	}
-
-	@Override
-	public boolean onCreateOptionsMenu(com.actionbarsherlock.view.Menu menu) {
-		getSupportMenuInflater().inflate(R.menu.main, menu);
-		getSupportActionBar().setTitle(R.string.app_name);
-		return true;
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) {
-		case android.R.id.home:
-			finish();
-			return true;
-		case R.id.action_settings:
-			startActivity(new Intent(MainActivity.this, Settings.class));
-		default:
-			return super.onOptionsItemSelected(item);
-		}
-	}
-
 }

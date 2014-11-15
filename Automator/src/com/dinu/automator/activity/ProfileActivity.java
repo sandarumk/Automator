@@ -6,7 +6,6 @@ package com.dinu.automator.activity;
  */
 
 import java.util.ArrayList;
-
 import java.util.List;
 
 import android.content.Intent;
@@ -14,6 +13,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.MenuItem;
 import com.dinu.automator.Constant;
@@ -21,6 +21,7 @@ import com.dinu.automator.DataStore;
 import com.dinu.automator.Profile;
 import com.dinu.automator.R;
 import com.dinu.automator.adapter.ProfileListAdapter;
+import com.dinu.automator.util.ViewUtils;
 
 public class ProfileActivity extends SherlockActivity {
 
@@ -31,7 +32,8 @@ public class ProfileActivity extends SherlockActivity {
 
 		getSupportActionBar().show();
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
+		
+		ViewUtils.setActionBarColor(this);
 
 	}
 	

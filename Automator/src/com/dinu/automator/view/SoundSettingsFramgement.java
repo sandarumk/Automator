@@ -29,37 +29,32 @@ public class SoundSettingsFramgement extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
 		view = inflater.inflate(R.layout.sound_setting_fragment, null);
-		CheckBox chkVolume= (CheckBox)view.findViewById(R.id.checkBox_volume_enable);
+		CheckBox chkVolume = (CheckBox) view.findViewById(R.id.checkBox_volume_enable);
 		chkVolume.setChecked(false);
 		SeekBar seek = (SeekBar) view.findViewById(R.id.seekBar_volume);
 		seek.setProgress(0);
-		ToggleButton switchSilent= (ToggleButton)view.findViewById(R.id.switch_silent);
+		ToggleButton switchSilent = (ToggleButton) view.findViewById(R.id.switch_silent);
 		switchSilent.setChecked(false);
-		CheckBox chkSilent=(CheckBox)view.findViewById(R.id.checkBox_silent_enable);
+		CheckBox chkSilent = (CheckBox) view.findViewById(R.id.checkBox_silent_enable);
 		chkSilent.setChecked(false);
-		ToggleButton switchVibration= (ToggleButton)view.findViewById(R.id.switch_vibration);
+		ToggleButton switchVibration = (ToggleButton) view.findViewById(R.id.switch_vibration);
 		switchVibration.setChecked(false);
-		CheckBox chkVibration=(CheckBox)view.findViewById(R.id.checkBox_silent_enable);
+		CheckBox chkVibration = (CheckBox) view.findViewById(R.id.checkBox_silent_enable);
 		chkVibration.setChecked(false);
-		
-		
-		if(sound!=null){
-			
-		
-		chkVolume.setChecked(sound.getRingVolume().isEnable());
-		seek.setProgress(sound.getRingVolume().getSetting());
-		
-		
-		switchSilent.setChecked(sound.getSilentMode().getBooleanSetting());
-		chkSilent.setChecked(sound.getSilentMode().isEnable());
-		
-		
-		switchVibration.setChecked(sound.getVibration().getBooleanSetting());
-		chkVibration.setChecked(sound.getVibration().isEnable());
-		 
-		
+
+		if (sound != null) {
+
+			chkVolume.setChecked(sound.getRingVolume().isEnable());
+			seek.setProgress(sound.getRingVolume().getSetting());
+
+			switchSilent.setChecked(sound.getSilentMode().getBooleanSetting());
+			chkSilent.setChecked(sound.getSilentMode().isEnable());
+
+			switchVibration.setChecked(sound.getVibration().getBooleanSetting());
+			chkVibration.setChecked(sound.getVibration().isEnable());
+
 		}
-		
+
 		return view;
 
 	}
@@ -69,32 +64,30 @@ public class SoundSettingsFramgement extends Fragment {
 	}
 
 	public void setSound(SoundProfile sound) {
-		
+
 		this.sound = sound;
 	}
 
 	public void updateData() {
 
 		// saving in sound object
-		
-		if (view != null && sound !=null) {
+
+		if (view != null && sound != null) {
 			SeekBar seek = (SeekBar) view.findViewById(R.id.seekBar_volume);
 			int volume = seek.getProgress();
-			CheckBox chkVolume= (CheckBox)view.findViewById(R.id.checkBox_volume_enable);
-			boolean volumeEnable=chkVolume.isChecked();
-			sound.setRingVolume(volume,volumeEnable);
-			
-			ToggleButton switchSilent= (ToggleButton)view.findViewById(R.id.switch_silent);
-			CheckBox chkSilent=(CheckBox)view.findViewById(R.id.checkBox_silent_enable);
-			sound.setSilentMode(switchSilent.isChecked(),chkSilent.isChecked());
-			
-			ToggleButton switchVibration= (ToggleButton)view.findViewById(R.id.switch_vibration);
-			CheckBox chkVibration=(CheckBox)view.findViewById(R.id.checkBox_vibration_enabled);
-			sound.setVibration(switchVibration.isChecked(),chkVibration.isChecked());
+			CheckBox chkVolume = (CheckBox) view.findViewById(R.id.checkBox_volume_enable);
+			boolean volumeEnable = chkVolume.isChecked();
+			sound.setRingVolume(volume, volumeEnable);
 
-		
+			ToggleButton switchSilent = (ToggleButton) view.findViewById(R.id.switch_silent);
+			CheckBox chkSilent = (CheckBox) view.findViewById(R.id.checkBox_silent_enable);
+			sound.setSilentMode(switchSilent.isChecked(), chkSilent.isChecked());
+
+			ToggleButton switchVibration = (ToggleButton) view.findViewById(R.id.switch_vibration);
+			CheckBox chkVibration = (CheckBox) view.findViewById(R.id.checkBox_vibration_enabled);
+			sound.setVibration(switchVibration.isChecked(), chkVibration.isChecked());
+
 		}
-		
 
 	}
 

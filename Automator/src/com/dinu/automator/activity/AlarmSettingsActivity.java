@@ -11,6 +11,7 @@ import com.dinu.automator.R.id;
 import com.dinu.automator.R.layout;
 import com.dinu.automator.R.menu;
 import com.dinu.automator.R.string;
+import com.dinu.automator.util.ViewUtils;
 
 import android.net.Uri;
 import android.os.Bundle;
@@ -50,6 +51,7 @@ public class AlarmSettingsActivity extends SherlockActivity {
 		if (getSupportActionBar() != null) {
 			getSupportActionBar().show();
 			getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+			ViewUtils.setActionBarColor(this);
 		}
 
 		index = getIntent().getIntExtra(Constant.INTENT_EXTRA_ALARM_INDEX, 5);

@@ -21,6 +21,7 @@ import com.dinu.automator.R;
 import com.dinu.automator.Sms;
 import com.dinu.automator.adapter.ProfileListAdapter;
 import com.dinu.automator.adapter.SmsListAdapter;
+import com.dinu.automator.util.ViewUtils;
 
 public class SmsActivity extends SherlockActivity {
 
@@ -31,7 +32,7 @@ public class SmsActivity extends SherlockActivity {
 		
 		getSupportActionBar().show();
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-		
+		ViewUtils.setActionBarColor(this);
 		
 
 	}

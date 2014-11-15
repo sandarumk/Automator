@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="activity_background">#FFFFFF</color>
+    <color name="splash_screen_font_gray">#474747</color>
+    <color name="edit_text_color">#FFFFFF</color>
+    <color name="actionbar_color">#1E88E5</color>
+    <color name="actionbar_text_color">#FFFFFF</color>
+    <color name="text_button">#474747</color>
+
+</resources>

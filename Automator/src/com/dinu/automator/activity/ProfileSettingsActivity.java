@@ -18,6 +18,7 @@ import com.dinu.automator.Constant;
 import com.dinu.automator.DataStore;
 import com.dinu.automator.Profile;
 import com.dinu.automator.R;
+import com.dinu.automator.util.ViewUtils;
 import com.dinu.automator.view.DisplaySettingsFragment;
 import com.dinu.automator.view.LocationFragment;
 import com.dinu.automator.view.NetworkSettingFragment;
@@ -37,6 +38,8 @@ public class ProfileSettingsActivity extends SherlockFragmentActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_profile_settings);
+		
+		ViewUtils.setActionBarColor(this);
 
 		index = getIntent().getIntExtra(Constant.INTENT_EXTRA_PROFILE_INDEX, 0);
 
