@@ -50,7 +50,8 @@
 
             <TableRow
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" >
+                android:layout_height="@dimen/row_height"
+                android:gravity="center_vertical" >
 
                 <TextView
                     android:id="@+id/textView_title"
@@ -58,12 +59,12 @@
                     android:layout_height="wrap_content"
                     android:text="@string/dialog_text_location"
                     android:textSize="18sp" />
-
             </TableRow>
 
             <TableRow
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" >
+                android:layout_height="@dimen/row_height"
+                android:gravity="center_vertical" >
 
                 <TextView
                     android:id="@+id/textView_name"
@@ -81,7 +82,8 @@
 
             <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
+                android:layout_height="@dimen/row_height"
+                android:gravity="center_vertical" >
 
                 <TextView
                     android:id="@+id/textView_lattitude"
@@ -99,7 +101,8 @@
 
             <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
+                android:layout_height="@dimen/row_height"
+                android:gravity="center_vertical" >
 
                 <TextView
                     android:id="@+id/textView_longitude"
@@ -117,7 +120,8 @@
 
             <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
+                android:layout_height="@dimen/row_height"
+                android:gravity="center_vertical" >
 
                 <TextView
                     android:id="@+id/textView_radius"
@@ -143,14 +147,14 @@
                 <RadioButton
                     android:id="@+id/radiobutton_entering"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/row_height"
                     android:clickable="true"
                     android:text="@string/dialog_list_choice_item1" />
 
                 <RadioButton
                     android:id="@+id/radiobutton_leaving"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/row_height"
                     android:text="@string/dialog_list_choice_item2" />
             </RadioGroup>
         </TableRow>
@@ -165,7 +169,6 @@
         android:layout_marginRight="24dp"
         android:background="#1E88E5"
         app:animate="true"
-        app:iconFloat="@drawable/ic_map"
-        app:rippleSpeed="1000.0" />
+        app:iconFloat="@drawable/ic_map" />
 
 </RelativeLayout>

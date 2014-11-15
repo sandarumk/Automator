@@ -2,86 +2,84 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" 
+    android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin">
-    
+    android:paddingTop="@dimen/activity_vertical_margin" >
+
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-        
+        android:layout_height="@dimen/row_height"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
         <CheckBox
             android:id="@+id/checkBox_wifi_enable"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical" />
 
-    
-    <TextView
-        android:id="@+id/textView_wifi"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:text="@string/network_fragment_wifi" 
-        android:layout_gravity="center"/>
-    
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="right" >
+        <TextView
+            android:id="@+id/textView_wifi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:clickable="true"
+            android:text="@string/network_fragment_wifi" />
 
-    
-    <ToggleButton
-        android:id="@+id/toggle_button_wifi"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" 
-        android:background="@drawable/selector_switch"
-        android:focusable="false"
-        android:textOn=""
-        android:textOff=""/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:orientation="horizontal" >
+
+            <ToggleButton
+                android:id="@+id/toggle_button_wifi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/selector_switch"
+                android:focusable="false"
+                android:textOff=""
+                android:textOn="" />
+        </LinearLayout>
     </LinearLayout>
-    </LinearLayout>
-    
-     <LinearLayout
-        android:orientation="horizontal"
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-    <CheckBox
+        android:layout_height="@dimen/row_height"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <CheckBox
             android:id="@+id/checkBox_bluetooth_enable"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical" />
 
-    
-    <TextView
-        android:id="@+id/textView_bluetooth"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:text="@string/network_fragment_bluetooth" 
-        android:layout_gravity="center"/>
-    
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="right" >
+        <TextView
+            android:id="@+id/textView_bluetooth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:clickable="true"
+            android:text="@string/network_fragment_bluetooth" />
 
-    
-    <ToggleButton
-        android:id="@+id/toggle_button_bluetooth"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/selector_switch"
-        android:focusable="false"
-        android:textOn=""
-        android:textOff="" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:orientation="horizontal" >
+
+            <ToggleButton
+                android:id="@+id/toggle_button_bluetooth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/selector_switch"
+                android:focusable="false"
+                android:textOff=""
+                android:textOn="" />
+        </LinearLayout>
     </LinearLayout>
-    </LinearLayout>
-    
 
 </LinearLayout>

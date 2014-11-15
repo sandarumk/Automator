@@ -38,7 +38,7 @@ public class ProfileSettingsActivity extends SherlockFragmentActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_profile_settings);
-		
+
 		ViewUtils.setActionBarColor(this);
 
 		index = getIntent().getIntExtra(Constant.INTENT_EXTRA_PROFILE_INDEX, 0);
@@ -81,7 +81,7 @@ public class ProfileSettingsActivity extends SherlockFragmentActivity {
 	public void onBackPressed() {
 
 		showSaveChangesDialog(this);
-		
+
 	}
 
 	@Override
@@ -166,34 +166,33 @@ public class ProfileSettingsActivity extends SherlockFragmentActivity {
 				});
 		builder.create().show();
 	}
-	
+
 	private void showSaveChangesDialog(final Context context) {
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		builder.setMessage("Do you want to save changes to the the profile?").setPositiveButton(R.string.dialog_button_yes, new DialogInterface.OnClickListener() {
+		builder.setMessage("Do you want to save changes to the the profile?")
+				.setPositiveButton(R.string.dialog_button_yes, new DialogInterface.OnClickListener() {
 
-			@Override
-			public void onClick(DialogInterface dialog, int which) {
-				// save the profile
-				if(index<0){
-					showSaveDialog(context);
-				}else{
-					DataStore.saveProfiles(context);
-					finish();
-				}
-				
-				
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						// save the profile
+						if (index < 0) {
+							showSaveDialog(context);
+						} else {
+							DataStore.saveProfiles(context);
+							finish();
+						}
 
-			}
-		}).setNegativeButton("No", new DialogInterface.OnClickListener() {
+					}
+				}).setNegativeButton("No", new DialogInterface.OnClickListener() {
 
-			@Override
-			public void onClick(DialogInterface dialog, int id) {
-				finish();
-			}
-		});
+					@Override
+					public void onClick(DialogInterface dialog, int id) {
+						finish();
+					}
+				});
 		builder.create().show();
-			
-		}
+
+	}
 
 	class TabbedPaneAdapter extends FragmentPagerAdapter {
 		public TabbedPaneAdapter(FragmentManager fm) {

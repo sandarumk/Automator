@@ -42,7 +42,7 @@ public class LocatorActivity extends SherlockActivity implements NoticeDialogLis
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_locator);
-		
+
 		ViewUtils.setActionBarColor(this);
 
 		map = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
@@ -118,12 +118,11 @@ public class LocatorActivity extends SherlockActivity implements NoticeDialogLis
 
 	@Override
 	public void onDialogNegativeClick(DialogFragment dialog) {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
-	public void onDialogPositiveClick(DialogFragment dialog, double lattitude, double longitude, int radius, String name, boolean entering) {
+	public void onDialogPositiveClick(DialogFragment dialog, double lattitude, double longitude, int radius,
+			String name, boolean entering) {
 		this.lattitude = lattitude;
 		this.longitude = longitude;
 		this.radius = radius;
@@ -170,16 +169,16 @@ public class LocatorActivity extends SherlockActivity implements NoticeDialogLis
 	}
 
 	private void moveToMarker(Marker marker) {
-//		double lat = marker.getPosition().latitude;
-//		double lon = marker.getPosition().longitude;
-//
-//		double offset = 100000 / 1E6;
-//
-//		LatLng southwest = new LatLng(lat - offset, lon - offset);
-//		LatLng northeast = new LatLng(lat + offset, lon + offset);
-//		LatLngBounds center = new LatLngBounds(southwest, northeast);
+		// double lat = marker.getPosition().latitude;
+		// double lon = marker.getPosition().longitude;
+		//
+		// double offset = 100000 / 1E6;
+		//
+		// LatLng southwest = new LatLng(lat - offset, lon - offset);
+		// LatLng northeast = new LatLng(lat + offset, lon + offset);
+		// LatLngBounds center = new LatLngBounds(southwest, northeast);
 
-//		CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(center, 10);
+		// CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(center, 10);
 		CameraUpdate cu = CameraUpdateFactory.newLatLngZoom(marker.getPosition(), 14.0f);
 		if (map != null) {
 			map.animateCamera(cu);

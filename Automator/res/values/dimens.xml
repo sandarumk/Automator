@@ -6,10 +6,15 @@
     <dimen name="lgo_text_size">48dp</dimen>
     <dimen name="version_size">15dp</dimen>
     <dimen name="version_spacing">3dp</dimen>
-
     <dimen name="main_button_height">64dp</dimen>
     <dimen name="main_card_radius">3dp</dimen>
     <dimen name="main_card_elevation">3dp</dimen>
+    
+    <dimen name="normal_margin">5dp</dimen>
+    <dimen name="higher_margin">10dp</dimen>
+
+    <dimen name="row_height">48dp</dimen>
+    
     
 
 </resources>

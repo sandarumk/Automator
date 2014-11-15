@@ -29,8 +29,6 @@ public class MainActivity extends SherlockActivity {
 		setContentView(R.layout.activity_main);
 		DataStore.retrieveData(this);
 
-//		/ViewUtils.setActionBarColor(this);
-
 		// handle profile
 		View profileView = findViewById(R.id.main_menu_profile_text);
 

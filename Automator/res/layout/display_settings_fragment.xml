@@ -10,7 +10,8 @@
 
     <TableRow
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="@dimen/row_height"
+        android:gravity="center_vertical" >
 
         <CheckBox
             android:id="@+id/checkBox_brightness_enable"
@@ -26,43 +27,44 @@
         <SeekBar
             android:id="@+id/seekBar_brightness"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/normal_margin" />
     </TableRow>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal" >
+        android:layout_height="@dimen/row_height"
+        android:gravity="center_vertical" >
 
         <CheckBox
             android:id="@+id/checkBox_sleep_enable"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true" />
+
+        <TextView
+            android:id="@+id/textView_sleep_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true" />
 
         <TextView
             android:id="@+id/textView_sleep"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:clickable="true"
-            android:text="@string/display_fragment_sleep" />
-
-        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="right"
-            android:orientation="horizontal" >
-
-            <TextView
-                android:id="@+id/textView_sleep_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-    </LinearLayout>
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_toRightOf="@+id/checkBox_sleep_enable"
+            android:clickable="true"
+            android:gravity="center_vertical"
+            android:text="@string/display_fragment_sleep" />
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/row_height"
+        android:gravity="center_vertical"
         android:orientation="horizontal" >
 
         <CheckBox
@@ -97,7 +99,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/row_height"
+        android:gravity="center_vertical"
         android:orientation="horizontal" >
 
         <CheckBox

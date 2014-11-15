@@ -26,12 +26,15 @@
         <SeekBar
             android:id="@+id/seekBar_volume"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/normal_margin" />
     </TableRow>
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/normal_margin"
+        android:gravity="center_vertical"
         android:orientation="horizontal" >
 
         <CheckBox
@@ -65,6 +68,8 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/normal_margin"
+        android:gravity="center_vertical"
         android:orientation="horizontal" >
 
         <CheckBox

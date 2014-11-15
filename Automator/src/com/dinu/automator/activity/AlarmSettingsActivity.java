@@ -12,6 +12,7 @@ import com.dinu.automator.R.layout;
 import com.dinu.automator.R.menu;
 import com.dinu.automator.R.string;
 import com.dinu.automator.util.ViewUtils;
+import com.gc.materialdesign.views.ButtonFloat;
 
 import android.net.Uri;
 import android.os.Bundle;
@@ -98,7 +99,7 @@ public class AlarmSettingsActivity extends SherlockActivity {
 		label = (EditText) findViewById(R.id.editText_alarm_set_label);
 		label.setText(alarmInstance.getLabel());
 
-		Button setLoc = (Button) findViewById(R.id.button_alarm_set_location);
+		ButtonFloat setLoc = (ButtonFloat) findViewById(R.id.button_alarm_set_location);
 		setLoc.setOnClickListener(new OnClickListener() {
 
 			@Override
