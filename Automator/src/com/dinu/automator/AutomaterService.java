@@ -22,6 +22,7 @@ import com.littlefluffytoys.littlefluffylocationlibrary.LocationLibraryConstants
 
 public class AutomaterService extends Service {
 
+	private static final String TAG = "AutomatorService";
 	private Map<BatteryLevel, ProfilePosition> batteryLevels; // map of enabled
 																// battery
 	// levels and profile
@@ -45,7 +46,7 @@ public class AutomaterService extends Service {
 
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
-		Log.d("AutomatorService", "service started");
+		Log.d(TAG, "service started");
 		int result = super.onStartCommand(intent, flags, startId);
 		Toast.makeText(this, "service starting", Toast.LENGTH_SHORT).show();
 		IntentFilter lftIntentFilter = new IntentFilter(
@@ -57,7 +58,7 @@ public class AutomaterService extends Service {
 		List<Profile> profileList = new ArrayList<Profile>();
 		profileList = DataStore.getProfileList();
 		for (Profile profile : profileList) {
-			if (profile.getBatteryLevel().isEnable()&& profile.isEnable()) {
+			if (profile.getBatteryLevel().isEnable() && profile.isEnable()) {
 				batteryLevels.put(profile.getBatteryLevel(), new ProfilePosition(1, profileList.indexOf(profile)));
 			}
 			if (profile.getLocations(getApplicationContext()).isEnable() && profile.isEnable()) {
@@ -70,15 +71,18 @@ public class AutomaterService extends Service {
 		List<Alarm> alarmList = new ArrayList<Alarm>();
 		alarmList = DataStore.getAlarmList();
 		for (Alarm alarm : alarmList) {
+			if (alarm.isEnabled()) {
 				locations.put(alarm.getLocation(), new ProfilePosition(3, alarmList.indexOf(alarm)));
+			}
 
 		}
 		alarmList = null;
 		List<Sms> smsList = new ArrayList<Sms>();
 		smsList = DataStore.getsmsList();
 		for (Sms sms : smsList) {
-
+			if (sms.isEnabled()) {
 				locations.put(sms.getLocation(), new ProfilePosition(3, smsList.indexOf(sms)));
+			}
 
 		}
 		smsList = null;
@@ -142,14 +146,15 @@ public class AutomaterService extends Service {
 
 			@Override
 			public void run() {
-				//LocationInfo loc = checklist.get(index.getValue());
-				//Log.d("Automator Service", "location reached  lat=" + loc.lastLat + " long=" + loc.lastLong);
-				//''handleLocations(loc, getApplication());
-				//if (index.getValue() == checklist.size() - 1) {
-				//	index.setValue(0);
-				//} else {
-				//	index.setValue(index.getValue() + 1);
-				//}
+				// LocationInfo loc = checklist.get(index.getValue());
+				// Log.d("Automator Service", "location reached  lat=" +
+				// loc.lastLat + " long=" + loc.lastLong);
+				// ''handleLocations(loc, getApplication());
+				// if (index.getValue() == checklist.size() - 1) {
+				// index.setValue(0);
+				// } else {
+				// index.setValue(index.getValue() + 1);
+				// }
 			}
 
 		}, 20 * 1000, 20 * 1000);
@@ -158,13 +163,13 @@ public class AutomaterService extends Service {
 	}
 
 	private void handleLocations(LocationInfo locationInfo, Context context) {
-		//Log.d("Automator service", "handle location called");
+		// Log.d("Automator service", "handle location called");
 		if (locations != null) {
-			//Log.d("Automator service", "location not null");
+			// Log.d("Automator service", "location not null");
 			for (Location loc : locations.keySet()) {
-				//Log.d("Automator service", "in for loop");
+				// Log.d("Automator service", "in for loop");
 				if (loc.checkNear(locationInfo, loc.getRadius())) {
-					Log.d("AutomatorService", "found a location match");
+					Log.d(TAG, "found a location match");
 					ProfilePosition pp = locations.get(loc);
 					if (!pp.isInRegion()) {
 						switch (pp.getFunctionality()) {
@@ -248,7 +253,7 @@ public class AutomaterService extends Service {
 			final LocationInfo locationInfo = (LocationInfo) intent
 					.getSerializableExtra(LocationLibraryConstants.LOCATION_BROADCAST_EXTRA_LOCATIONINFO);
 
-			Log.d("AutomatorService", "location lat=" + locationInfo.lastLat + " long=" + locationInfo.lastLong);
+			Log.d(TAG, "location lat=" + locationInfo.lastLat + " long=" + locationInfo.lastLong);
 
 			handleLocations(locationInfo, context);
 		}
@@ -290,7 +295,7 @@ public class AutomaterService extends Service {
 		Toast.makeText(getApplicationContext(), "Automator Service destroyed", Toast.LENGTH_LONG).show();
 		unregisterReceiver(locationBroadcastReceiver);
 		unregisterReceiver(batterylevelReceiver);
-		Log.d("AutomatorService", "service stopped");
+		Log.d(TAG, "service stopped");
 	}
 
 }
