@@ -7,7 +7,7 @@
     <string name="action_delete">Delete</string>
     <string name="action_settings">Settings</string>
     <string name="app_logo_text">Automator</string>
-    <string name="app_version_info">Version 1.0.0 \n 2013 \u00A9 Dinu Kumarasiri </string>
+    <string name="app_version_info">Version 1.0.1 \n 2014 \u00A9 Dinu Kumarasiri </string>
     <string name="image_description">Logo</string>
     <string name="list_row_profile">Profiles</string>
     <string name="list_row_alarm">Alarms</string>
@@ -38,7 +38,7 @@
     <string name="dialog_list_choice_item1">Entering</string>
     <string name="dialog_list_choice_item2">Leaving</string>
     <string name="dialog_button_save">Save</string>
-    <string name="dialog_button_yes">Yes</string>
+    <string name="dialog_button_yes">OK</string>
     <string name="dialog_button_cancel">Cancel</string>
     <string name="fragment_set_location_on_map_button">Map</string>
     <string name="title_activity_location">LocationActivity</string>
